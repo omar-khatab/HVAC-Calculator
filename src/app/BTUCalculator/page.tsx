@@ -14,17 +14,9 @@ export default function BTUCalculator() {
 
     function handleCalculate () {
 
-        if (inputs.roomArea <= 0) {
-            alert("من فضلك ادخل مساحة صحيحة اكبر من الصفر")
-            return;
-        }
-        if(inputs.occupants < 0) {
-            alert("عدد الاشخاص لايمكن ان يكون سالبا")
-            return;
-        }
 
-        let btu = inputs.roomArea * 300;
-        btu += inputs.occupants * 500
+        let btu = inputs.roomArea * 40;
+        btu += inputs.occupants * 600
 
         if (inputs.hasWindow) {
             btu +=500;
@@ -42,8 +34,11 @@ export default function BTUCalculator() {
                     مساحة الغرفة (sq ft)
                 </label>
                 <input type="number" 
+                min={10}
                 value={inputs.roomArea}
-                onChange={(e) => setInputs({...inputs, roomArea : Number(e.target.value)})}
+                onChange={(e) => {
+                    setInputs({...inputs, roomArea : Number(e.target.value)})
+                }}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black"/>
             </div>
             <div className="mb-4">
@@ -51,28 +46,33 @@ export default function BTUCalculator() {
                     عدد الاشخاص
                 </label>
                 <input type="number" 
+                min={0}
                 value={inputs.occupants}
-                onChange={(e) => setInputs({...inputs, occupants : Number(e.target.value)})}
+                onChange={(e) => {
+                    setInputs({...inputs, occupants : Number(e.target.value)})
+                }}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black"/>
             </div>
             <div className="mb-4 flex items-center gap-2">
                 <input type="checkbox" id="window"
                 checked={inputs.hasWindow}
-                onChange={(e) => setInputs({...inputs, hasWindow : e.target.checked})}
+                onChange={(e) => {
+                    setInputs({...inputs, hasWindow : e.target.checked})
+                }}
                 className="text-black"
                 />
                 <label className="text-sm text-black" htmlFor="window">
                     هل يوجد شباك كبير ؟
                 </label>
             </div>
-
             <button onClick={handleCalculate}
             className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600"
             >احسب</button>
-
             {result !==null && (
                 <p className="mt-4 text-lg font-bold text-black">
-                    النتيجة : {result} BTU
+                    Result : {result} BTU
+                    | {(result / 3412).toFixed(2)} kw
+                    | {(result * 0.00039301).toFixed(2)} hp
                 </p>
             )}
         </div>

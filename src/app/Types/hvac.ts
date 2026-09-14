@@ -16,3 +16,9 @@ export interface BTUInputs {
     occupants : number;       //  عدد الاشخاص
     hasWindow : boolean;      // يوجد شباك ام لا 
 }
+
+// navBar Links روابط
+export interface Links {
+    id : number,
+    title : string
+}
