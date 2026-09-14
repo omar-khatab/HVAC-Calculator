@@ -1,5 +1,5 @@
-import BTUCalculator from "@/app/BTUCalculator/page";
-import DuctSizer from "@/app/DuctSizer/page";
+import BTUCalculator from "./BTUCalculator/page";
+
 
 export default function Home() {
   return (

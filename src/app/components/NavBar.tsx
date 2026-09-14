@@ -11,7 +11,7 @@ export default function NavBar() {
     ]
     const navHead = navLinks.map((l) => {
                 return <Link key={l.id}  href={`/${l.title}`} 
-                className={`${path == "/" + l.title ? "bg-gray-950 text-gray-100" : ""}  rounded-xl p-2 text-[16px]`}>          
+                className={`${path == "/" + l.title ? "bg-gray-900 text-gray-100" : ""}  rounded-xl p-2 text-[16px]`}>          
                     {l.title}
                 </Link>
     })
