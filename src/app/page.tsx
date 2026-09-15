@@ -1,9 +1,8 @@
-import BTUCalculator from "./BTUCalculator/page";
 
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="bg-gray-100">
         
     </div>
   );

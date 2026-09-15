@@ -11,13 +11,11 @@ export interface DuctSizerResult {
 }
 
 // المدخلات لحاسبة BTU
-type expose = 1 | 1.2 | 1.4
-
 export interface BTUInputs {
     roomArea : number;        // مساحة الغرفة (sq ft)
     occupants : number;       //  عدد الاشخاص
     window : number;      //      عدد الشبابيك
-    sunExposure : expose,     // نسبة التعرض للشمس
+    sunExposure : number,     // نسبة التعرض للشمس
 }
 
 // navBar Links روابط
