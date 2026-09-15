@@ -1,11 +1,11 @@
+import BTUmain from "./BTUComponent/BTUmain";
 
-import Calculations from "./Calculations";
 
 
-export default function MainBTUCalc() {
+export default function page() {
 
    
     return (
-        <Calculations/>
+        <BTUmain/>
     )
 }

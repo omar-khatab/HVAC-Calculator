@@ -23,3 +23,12 @@ export interface Links {
     id : number,
     title : string
 }
+
+// recommendation cards   كروت التوصية
+export interface RecommendationsTypes {
+    id : number, 
+    ton : string, 
+    btu : string, 
+    space : string, 
+    status : boolean
+}
