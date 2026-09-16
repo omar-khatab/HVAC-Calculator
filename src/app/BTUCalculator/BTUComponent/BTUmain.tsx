@@ -1,11 +1,11 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useState } from "react"
 import { BTUInputs, RecommendationsTypes } from "../../Types/hvac"
-import BTUCalc from "./BTUCalc"
-import BTUOutput from "./BTUOutput"
-import BTURecommendations from "./BTURecommendations"
-import BTUFormula from "./BTUFormula"
+import BTURecommendations from "./Recommendations/BTURecommendations"
+import BTUCalc from "./Calculations/BTUCalc"
+import BTUFormula from "./Calculations/BTUFormula"
+import BTUOutput from "./Outputs/BTUOutput"
 
 export default function BTUmain() {
 
@@ -16,12 +16,7 @@ export default function BTUmain() {
         sunExposure : 1,
     })
 
-    // using useMemo to rerender(change) calculation, in case of the inputs is changed
-    const result = useMemo (() => {
-        const base = inputs.roomArea * 40;
-        const sub = base + inputs.occupants * 600 + inputs.window * 1000
-        return sub * inputs.sunExposure
-    },[inputs])
+    const result = (inputs.roomArea * 40 + inputs.occupants * 600 + inputs.window * 1000) * inputs.sunExposure
 
     const recommendationCard : RecommendationsTypes[]= [
         {id : 1, ton: "< 1 ton" , btu : "< 12k BTU", space : "Small office / غرفة صغيرة", 
@@ -39,11 +34,11 @@ export default function BTUmain() {
     ]
 
     return (
-        <div className="grid grid-cols-2 gap-2.5">
-            <BTUCalc inputs={inputs} setInputs={setInputs} />
-            <BTUFormula inputs = {inputs}/>
-            <BTUOutput result = {result}/>
-            <BTURecommendations recommendationCard = {recommendationCard}/>
+        <div className="flex flex-wrap">
+            <BTUCalc inputs={inputs} setInputs={setInputs}/>
+            <BTUFormula inputs={inputs}/>
+            <BTUOutput result = {result} inputs={inputs} />
+            <BTURecommendations recommendationCard = {recommendationCard} result = {result}/>
         </div>
     )
 }
