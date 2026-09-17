@@ -18,7 +18,7 @@ const [inputs, setInputs] = useState<DuctSizerInputs>({
     <>
       <DuctCalc inputs={inputs} setInputs={setInputs}/>
       <DuctFormula inputs={inputs} result = {result}/>
-      <MainOutput result ={result}/>
+      <MainOutput result ={result} inputs = {inputs}/>
     </>
   )
 }

@@ -25,11 +25,11 @@ export default function BTUOutput({result, inputs} : Props) {
         <h3>ROOM SPACE</h3>
         <div>
             <span>Area • المساحة</span>
-            <span>{inputs.roomArea} ft <sup>2</sup></span>
+            <span>{inputs.roomArea} ft<sup>2</sup></span>
         </div>
         <div>
             <span>Base load</span>
-            <span>{inputs.roomArea * 40} ft <sup>2</sup></span>
+            <span>{inputs.roomArea * 40} ft<sup>2</sup></span>
         </div>
         <div>
             <span>People</span>
