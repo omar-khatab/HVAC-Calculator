@@ -1,0 +1,50 @@
+
+type Props = {
+    result : number,
+}
+
+export default function Recommendations({ result} : Props) {
+    const recommendationCard : {id : number, 
+    ton : string, 
+    btu : string, 
+    space : string, 
+    status : boolean}[] = [
+        {id : 1, ton: "< 1 ton" , btu : "< 12k BTU", space : "Small office / غرفة صغيرة", 
+            status : result < 12000 },
+        {id : 2, ton: "1 - 1.5 ton" , btu : "12k-18k BTU", space : "Bedroom / غرفة نوم", 
+            status : result >= 12000 && result < 18000},
+        {id : 3, ton: "1.5 - 2 ton" , btu : "18k-24k BTU", space : "Large bedroom / كبيرة", 
+            status : result >= 18000 && result < 24000},
+        {id : 4, ton: "2 - 2.5 ton" , btu : "24k-30k BTU", space : "Living room / صالة", 
+            status : result >= 24000 && result < 30000},
+        {id : 5, ton: "2.5 - 3.5 ton" , btu : "30k-42k BTU", space : "Open plan / مفتوحة", 
+            status : result >= 30000 && result < 42000},
+        {id : 6, ton: "3.5+ ton" , btu : "> 42k BTU", space : "Commercial / تجاري", 
+            status : result >= 42000},
+    ]
+    return (
+        <div className="p-6 bg-white rounded-xl shadow-md">
+            <div>
+                <span>Recommendation • التوصية حسب الطن</span>
+                <span> {recommendationCard.map((r) => {
+                    return r.status ? r.ton : ""
+                })} • ACTIVE</span>
+            </div>
+            <ul className="flex gap-1">
+                {recommendationCard.map((r) => {
+            return <li key={r.id} className={`list-none p-2 rounded-xl 
+                    ${r.status ? "bg-gray-900 text-gray-200 shadow-xl scale-105" : "bg-gray-200 text-gray-900"}`}>
+                    <span>{r.ton}</span>
+                    <span>{r.btu}</span>
+                    <p>{r.space}</p>
+                </li>
+            })}
+            </ul>
+            <div className="bg-amber-200">Recommended : {recommendationCard.map((r) => {
+                return r.status ? r.space : "" 
+                })}
+                <p>{result.toFixed(0)} BTU</p>
+            </div>
+        </div>
+    )
+}

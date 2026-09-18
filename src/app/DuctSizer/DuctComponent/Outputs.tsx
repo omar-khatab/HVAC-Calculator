@@ -5,7 +5,7 @@ type  Props = {
     inputs : DuctSizerInputs,
 }
 
-export default function MainOutput({result, inputs} : Props) {
+export default function Outputs({result, inputs} : Props) {
 
     const detailsDesign : { id : number, title : string, desc: string, recommendations : string, status : boolean }[] = [
         {id : 1 , title:"Low velocity • هادئ", desc : " مناسبة لغرف هادئة", recommendations: "Friction → • Noise low ",
@@ -28,7 +28,7 @@ export default function MainOutput({result, inputs} : Props) {
                         </div>
                         <div>
                             <h3>DUCT AREA</h3>
-                            <p>{result * 144} in<sup>2</sup></p>
+                            <p>{(result * 144).toFixed(0)} in<sup>2</sup></p>
                             <span>{result.toFixed(1)} ft<sup>2</sup></span>
                             <span> • {(result * 0.0929).toFixed(3)} m<sup>2</sup></span>
                         </div>

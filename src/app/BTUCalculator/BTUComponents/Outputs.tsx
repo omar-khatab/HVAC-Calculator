@@ -1,11 +1,11 @@
 import { BTUInputs } from "@/app/Types/hvac"
 
 type Props = {
-  result: number,
-  inputs : BTUInputs,
+    result: number,
+    inputs : BTUInputs,
 }
 
-export default function BTUOutput({result, inputs} : Props) {
+export default function Outputs({result, inputs} : Props) {
   return (
     <div>
 

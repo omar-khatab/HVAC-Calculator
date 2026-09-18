@@ -1,11 +1,10 @@
 "use client"
 
 import { usePathname } from "next/navigation"
-import { Links } from "../Types/hvac"
 import Link from "next/link"
 export default function NavBar() {
     const path = usePathname()
-    const navLinks : Links[] = [
+    const navLinks : {id : number, title : string}[] = [
         {id : 1, title : "DuctSizer"}, 
         {id : 2 , title : "BTUCalculator"},
     ]

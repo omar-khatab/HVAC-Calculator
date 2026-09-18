@@ -1,10 +1,10 @@
-import Ductmain from "./DuctComponent/Ductmain";
+import Main from "./DuctComponent/Main";
 
 export default function DuctSizer() {
    
     return (
        <>
-       <Ductmain/>
+       <Main/>
        </>
     )
 }

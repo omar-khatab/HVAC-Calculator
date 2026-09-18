@@ -1,4 +1,4 @@
-import BTUmain from "./BTUComponent/BTUmain";
+import Main from "./BTUComponents/Main";
 
 
 
@@ -6,6 +6,6 @@ export default function page() {
 
    
     return (
-        <BTUmain/>
+        <Main/>
     )
 }
