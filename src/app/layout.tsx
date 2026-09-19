@@ -22,12 +22,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased bg-gray-100`}>
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="">
         <NavBar/>
-        <h1 className="text-7xl font-light m-10 text-center">
-          Quick Cooling <i className="text-gray-600">load Calc</i> for any room.
-          </h1>
         {children}
       </body>
     </html>

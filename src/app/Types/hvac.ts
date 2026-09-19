@@ -4,12 +4,6 @@ export interface DuctSizerInputs {
     velocity : number;        // السرعة (Feet per Minute)
 }
 
-// // النتيجة الراجعة من الحاسبة
-// export interface DuctSizerResult {
-//     area : number;            // المساحة المطلوبة (sq ft)
-//     diameter : number;        // القطر في حالة الدكت الدائرى (inches)
-// }
-
 // المدخلات لحاسبة BTU
 export interface BTUInputs {
     roomArea : number;        // مساحة الغرفة (sq ft)

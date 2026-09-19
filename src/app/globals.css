@@ -1,17 +1,29 @@
 @import "tailwindcss";
 
-
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+      /* slate-50 */
+      --color-head: #FFFFFF;
+      --color-surface : #bfbfbf;
+      /* slate-900 - للهيدر والنصوص المهمة */
+      --color-primary: #0F172A;    
+      /* slate-700 - للنصوص الثانوية */
+      --color-secondary: #334155;  
+      /* sky-500 - لون التكييف والبرودة - للأزرار والنتائج */
+      --color-accent: #0EA5E9;     
+      /* sky-600 */
+      --color-accentHover: #0284C7;
+      /* slate-200 */
+      --color-border: #E2E8F0;     
+      /* للحسابات الصحيحة */
+      --color-success: #10B981;    
+      --font-sans: var(--font-geist-sans);
+      --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-head);
+  color: var(--color-primary);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
+  
 
