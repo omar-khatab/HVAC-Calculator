@@ -22,19 +22,26 @@ const [inputs, setInputs] = useState<DuctSizerInputs>({
     }
 
   return (
-    <>
-    {/* custom component for inputs */}
-      <Inputs label="AIRFLOW • معدل التدفق (CFM)" value={inputs.cfm} min={10} max={10000} step={50} calc={calcCFM}/>
-      <Inputs label="السرعة (fpm)" value={inputs.velocity} min={100} max={3000} step={50} calc={calcVelocity}/>
-      {/* UI for Formula */}
-      <div>
-        <h3>FORMULA • المعادلة</h3>
-        <p>Area = CFM / Velocity</p>
-        <p>{inputs.cfm} / {inputs.velocity} = {result} ft<sup>2</sup></p>
-        <p>{(result * 144).toFixed(1)} in<sup>2</sup> • {(result * 929.0304).toFixed(0)} cm<sup>2</sup></p>
+    <div className="container m-auto grid grid-cols-3 grid-rows-1 gap-3">
+      <div className="p-6 bg-primary text-surface rounded-2xl">
+        <div>
+          <h2 className="text-xl font-extrabold mb-4 text-head">Duct Sizer</h2>
+          {/* custom component for inputs */}
+          <Inputs label="AIRFLOW • معدل التدفق (CFM)" value={inputs.cfm} min={0} max={10000} step={50} calc={calcCFM}/>
+          <Inputs label="السرعة (fpm)" value={inputs.velocity} min={100} max={3000} step={50} calc={calcVelocity}/>
+        </div>
+        {/* UI for Formula */}
+        <div className="bg-primary text-surface rounded-2xl p-4 border-surface border-2 mt-4">
+          <h3 className="text-head text-xl font-bold mb-2">FORMULA • المعادلة</h3>
+          <p>Area = CFM / Velocity</p>
+          <p>{inputs.cfm} / {inputs.velocity} = {result} ft<sup>2</sup></p>
+          <p>{(result * 144).toFixed(1)} in<sup>2</sup> • {(result * 929.0304).toFixed(0)} cm<sup>2</sup></p>
+        </div>
       </div>
-      <Outputs result ={result} inputs = {inputs}/>
-      <Recommendations result ={result}/>
-    </>
+      <div className="flex flex-col gap-3 col-span-2">
+        <Outputs result ={result} inputs = {inputs}/>
+        <Recommendations result ={result}/>
+      </div>
+    </div>
   )
 }

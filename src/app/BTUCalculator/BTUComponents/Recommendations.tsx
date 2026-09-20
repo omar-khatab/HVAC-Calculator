@@ -23,8 +23,8 @@ export default function Recommendations({ result} : Props) {
             status : result >= 42000},
     ]
     return (
-        <div className="p-5 bg-primary rounded-xl shadow-md">
-            <div className="text-head mb-4 flex justify-between pb-5 border-b border-surface">
+        <div className="p-5 bg-primary rounded-2xl">
+            <div className="text-head mb-4 flex justify-between items-center pb-5 border-b border-surface">
                 <span className="text-2xl">Recommendation • التوصية حسب الطن</span>
                 <span className="bg-secondary p-2 rounded-2xl text-l"> {recommendationCard.map((r) => {
                     return r.status ? r.ton : ""
@@ -43,7 +43,7 @@ export default function Recommendations({ result} : Props) {
             })}
             </ul>
             <div className="bg-amber-200 rounded-2xl px-4 py-2"><span className="text-xl font-bold">Recommended</span> : {recommendationCard.map((r) => {
-                return r.status ? <span className="text-xl font-bold">{r.space}</span> : "" 
+                return r.status ? <span key={r.id} className="text-xl font-bold">{r.space}</span> : "" 
                 })}
                 <p>Calculated {result} BTU → {(result / 12000).toFixed(2)} Tons. For best efficiency, round up to next available unit size. 
                 </p>

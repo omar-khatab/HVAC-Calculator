@@ -36,7 +36,7 @@ export default function Main() {
     return (
         <div className="container m-auto grid grid-cols-3 grid-rows-1 gap-3">
             <div className="p-4 bg-primary text-surface rounded-2xl">
-                <h2 className="text-xl font-extrabold mb-4 text-head">BTU Calculator</h2>
+                <h2 className="text-xl font-extrabold mb-2 text-head">BTU Calculator</h2>
                 {/* custom component for inputs */}
                 <Inputs label="مساحة الغرفة (sq ft)" min={50} max={2000} step={10} value={inputs.roomArea} calc = {calcRoomArea}/>
                 <Inputs label="عدد الاشخاص" min={0} max={100} value={inputs.occupants}calc = {calcOccupants}/>
@@ -45,7 +45,7 @@ export default function Main() {
                 <h3 className="p-2">SUN EXPOSURE • التعرض للشمس </h3>
                 <div className="flex gap-1.5 mb-3 p-2">
                     {[1 , 1.2 , 1.4].map((val) => {
-                    return <label key={val} className={`cursor-pointer rounded-lg p-2 font-medium
+                    return <label key={val} className={`cursor-pointer rounded-2xl p-2 font-medium
                                     ${inputs.sunExposure === val ? "bg-surface text-primary" : "bg-secondary text-surface"}`}>
                                 <input type="radio" name="sun" checked = {inputs.sunExposure === val}
                                     onChange = {() => setInputs({...inputs, sunExposure : val})}
@@ -55,16 +55,16 @@ export default function Main() {
                     })}
                 </div>
                 {/* UI for formula */}
-            <div className="bg-primary text-surface rounded-2xl shadow-md p-4 border-surface border-2">
-                <h3 className="text-head text-xl font-bold mb-2">FORMULA • المعادلة</h3>
-                <p> Base = Area x 40</p>
-                <p> {inputs.roomArea } x 40 = <span>{base.toLocaleString()}</span></p>
-                <p>+ windows : {inputs.window} x 1000 = <span>{windows}</span></p>
-                <p>sub = (Base + Windows) x <span>{inputs.sunExposure}</span> (sun)</p>
-                <p>sub = {(base + windows)} x <span>{inputs.sunExposure}</span> = {sub}</p>
-                <p>+ People {inputs.occupants} x 600 = <span>{people}</span></p>
-                <h3>= {result.toFixed(0)} BTU = {(result / 12000).toFixed(2)} Ton</h3>
-            </div>
+                <div className="bg-primary text-surface rounded-2xl p-4 border-surface border-2">
+                    <h3 className="text-head text-xl font-bold mb-2">FORMULA • المعادلة</h3>
+                    <p> Base = Area x 40</p>
+                    <p> {inputs.roomArea } x 40 = <span>{base.toLocaleString()}</span></p>
+                    <p>+ windows : {inputs.window} x 1000 = <span>{windows}</span></p>
+                    <p>sub = (Base + Windows) x <span>{inputs.sunExposure}</span> (sun)</p>
+                    <p>sub = {(base + windows)} x <span>{inputs.sunExposure}</span> = {sub}</p>
+                    <p>+ People {inputs.occupants} x 600 = <span>{people}</span></p>
+                    <h3>= {result.toFixed(0)} BTU = {(result / 12000).toFixed(2)} Ton</h3>
+                </div>
             </div>
             <div className="flex flex-col justify-between col-span-2">
                 <Outputs result = {result} inputs={inputs} />

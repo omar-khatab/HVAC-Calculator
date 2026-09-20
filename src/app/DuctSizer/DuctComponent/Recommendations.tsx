@@ -16,7 +16,7 @@ function getSuggestions(result: number) {
   // 7. اقبله لو عدى كل الشروط | Accept if all conditions are met
   // 8. رتب لأقرب شكل للمربع وخد افضل 4 | Sort by proximity to a square shape and select the best 4
 
-  const suggestions : {width : number , height : number, ratio : number, error : number}[] = []
+  const suggestions : {width : number , height : number, area : number, ratio : number, error : number}[] = []
 
   // set to prevent the repetitions of sizes
   const seen = new Set<string>()
@@ -45,6 +45,7 @@ function getSuggestions(result: number) {
     suggestions.push({
       width,
       height,
+      area : actualArea,
       ratio : Number(aspectRatio.toFixed(2)),
       error : Number(errorPercent.toFixed(2)),
     })
@@ -56,17 +57,24 @@ function getSuggestions(result: number) {
 
 export default function Recommendations({result} : Props) {
   const finalSuggestions = getSuggestions(result)
-  const areaSqInch = result * 144
   return (
-    <div>
+    <div className="p-6 bg-primary text-surface rounded-2xl">
+      <div className="flex justify-between mb-5">
+          <h2 className="text-xl font-bold">Suggested Rectangular Sizes • مقاسات مقترحة</h2>
+          <span className="bg-secondary rounded-2xl px-2 py-1">mm = in x 25.4</span>
+      </div>
       {finalSuggestions.map((s,i) => {
         const isBest = i === 0
         return (
-          <div key={`${s.width}x${s.height}`} className="my-2">
-            <span className="rounded-2xl bg-gray-900 text-gray-200 p-2">{i+1}</span>
-            <span>{`${s.width}" x ${s.height}"`} / </span>
-            <span>{`${(s.width * 25.4).toFixed(0)} mm x ${(s.height * 25.4).toFixed(0)} mm`}</span>
-            <p>{areaSqInch.toFixed(0)} in<sup>2</sup> • Ratio {s.ratio}:1 • {isBest ? "Closest to square • الأقرب للمربع" : "Aspect OK"}</p>
+          <div key={`${s.width}x${s.height}`} className=" py-3 border-t border-surface hover:opacity-80 transition flex items-center gap-4">
+            <h3 className={`${isBest ? "bg-white text-primary" : "border"} h-[40] w-[40] text-xl rounded-full flex items-center justify-center`}>{i+1}</h3>
+            <div className=" flex-1">
+              <div className="font-bold text-lg mb-1">
+                <span>{`${s.width}" x ${s.height}"`} / </span>
+                <span>{`${(s.width * 25.4).toFixed(0)} mm x ${(s.height * 25.4).toFixed(0)} mm`}</span>
+              </div>
+              <p className="">{(s.area).toFixed(0)} in<sup>2</sup> • Ratio {s.ratio}:1 • {isBest ? "Closest to square • الأقرب للمربع" : "Aspect OK"}</p>
+            </div>
           </div>
         )
       })}
