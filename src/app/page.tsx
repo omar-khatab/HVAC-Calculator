@@ -3,8 +3,7 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div className="max-w-7xl m-auto px-4 mt-[100] flex flex-col items-center text-center">
-
+    <div className="max-w-7xl mx-auto px-4 mt-[100] pb-[80] flex flex-col items-center text-center">
       {/* Hero */}
       <div className="mb-16 max-w-2xl">
         <span className="inline-block bg-secondary/10 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-4">

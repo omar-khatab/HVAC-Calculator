@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation"
 import Link from "next/link"
+
 export default function NavBar() {
     const path = usePathname()
     const navLinks : {id : number, title : string, link : string}[] = [
