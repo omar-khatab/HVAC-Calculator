@@ -23,14 +23,14 @@ export default function Recommendations({ result} : Props) {
             status : result >= 42000},
     ]
     return (
-        <div className="p-5 bg-primary rounded-2xl">
-            <div className="text-head mb-4 flex justify-between items-center pb-5 border-b border-surface">
-                <span className="text-2xl">Recommendation • التوصية حسب الطن</span>
-                <span className="bg-secondary p-2 rounded-2xl text-l"> {recommendationCard.map((r) => {
+        <div className="p-6 bg-primary rounded-2xl lg:col-span-2">
+            <div className="text-head  flex justify-between items-center pb-5 border-b border-surface">
+                <span className="md:text-2xl">Recommendation • التوصية حسب الطن</span>
+                <span className="bg-secondary p-2 rounded-2xl text-[14px]"> {recommendationCard.map((r) => {
                     return r.status ? r.ton : ""
                 })} • ACTIVE</span>
             </div>
-            <ul className="grid grid-cols-3 gap-3 py-4">
+            <ul className="grid md:grid-cols-3 gap-3 py-4">
                 {recommendationCard.map((r) => {
             return <li key={r.id} className={`list-none p-2 rounded-2xl
                     ${r.status ? "bg-secondary text-surface shadow-xl" : "bg-surface text-primary"}`}>

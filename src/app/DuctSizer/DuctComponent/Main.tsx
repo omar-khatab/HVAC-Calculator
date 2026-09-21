@@ -22,8 +22,8 @@ const [inputs, setInputs] = useState<DuctSizerInputs>({
     }
 
   return (
-    <div className="container m-auto grid grid-cols-3 grid-rows-1 gap-3">
-      <div className="p-6 bg-primary text-surface rounded-2xl">
+    <div className="grid lg:grid-cols-3 lg:grid-rows-3 w-full max-w-7xl mx-auto px-4 gap-4 grid-cols-1 row-span-1 mt-[100]">
+      <div className=" bg-primary text-surface p-5 rounded-2xl lg:row-span-3">
         <div>
           <h2 className="text-xl font-extrabold mb-4 text-head">Duct Sizer</h2>
           {/* custom component for inputs */}
@@ -38,10 +38,8 @@ const [inputs, setInputs] = useState<DuctSizerInputs>({
           <p>{(result * 144).toFixed(1)} in<sup>2</sup> • {(result * 929.0304).toFixed(0)} cm<sup>2</sup></p>
         </div>
       </div>
-      <div className="flex flex-col gap-3 col-span-2">
         <Outputs result ={result} inputs = {inputs}/>
         <Recommendations result ={result}/>
-      </div>
     </div>
   )
 }

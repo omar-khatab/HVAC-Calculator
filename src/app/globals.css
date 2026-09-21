@@ -20,7 +20,6 @@
       --font-mono: var(--font-geist-mono);
 }
 
-
 body {
   background: var(--color-head);
   color: var(--color-primary);

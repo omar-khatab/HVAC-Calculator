@@ -17,29 +17,29 @@ export default function Outputs({result, inputs} : Props) {
     ]
     const diameterInch = 2 * Math.sqrt((result * 144) / Math.PI) 
     return (
-            <div className="flex justify-between text-[14px]">
-                    <div className="bg-primary text-surface p-6 rounded-2xl flex flex-col gap-2 w-[200]">
+            <div className=" rounded-2xl lg:col-span-2 flex md:justify-between justify-center h-fit gap-2 flex-col md:flex-row">
+                    <div className="bg-primary text-surface p-5 rounded-2xl flex flex-col justify-between gap-2 md:w-[265] w-full">
                         <h3 className="">EQUIVALENT DIA</h3>
                         <p>
-                            <span className="text-3xl">{diameterInch.toFixed(1)}<sup>{`"`}</sup></span>
+                            <span className="text-3xl font-bold">{diameterInch.toFixed(1)}<sup>{`"`}</sup></span>
                             <span>{`/ ${(diameterInch * 25.4).toFixed(0)} mm`}</span>
                         </p>
                         <p className="text-[10px]">
                             Round duct equivalent • القطر المكافئ
                         </p>
                     </div>
-                    <div className="bg-primary text-surface p-6 rounded-2xl flex flex-col gap-2 w-[200]">
+                    <div className="bg-primary text-surface p-5 rounded-2xl flex flex-col justify-between gap-2 md:w-[265] w-full">
                         <h3 className="">DUCT AREA</h3>
-                        <p className="text-3xl ">{(result * 144).toFixed(0)} <span className="text-[16px]">in<sup>2</sup></span></p>
+                        <p className="text-3xl font-bold">{(result * 144).toFixed(0)} <span className="text-[16px]">in<sup>2</sup></span></p>
                         <p>{result.toFixed(3)} ft<sup>2</sup> • {(result * 0.0929).toFixed(3)} m<sup>2</sup></p>
                     </div>
-                    <div className="bg-primary text-surface p-6 rounded-2xl flex flex-col gap-2 w-[200]">
+                    <div className="bg-primary text-surface p-5 rounded-2xl flex flex-col  gap-1 md:w-[265] w-full">
                         <h3 className="">STATUS</h3>
                         {detailsDesign.map((s) => {
                             return s.status ? 
-                            <div key={s.id}>
-                                <h3>{s.title}</h3>
-                                <p>{s.desc}</p>
+                            <div key={s.id} className="flex gap-1 flex-col">
+                                <h3 className="font-bold">{s.title}</h3>
+                                <p className="font-bold">{s.desc}</p>
                                 <p>{s.recommendations}</p>
                             </div>
                             : ""

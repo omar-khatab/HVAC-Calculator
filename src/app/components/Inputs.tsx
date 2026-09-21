@@ -16,7 +16,7 @@ export default function Inputs({label , value, min, max, step, calc } : Props) {
                 <span>{label}</span>
                 <span>{value}</span>
             </label>
-            <div className="flex justify-between">
+            <div className="flex flex-wrap gap-3">
                 <input type="range" 
                     min={min}
                     max={max}
@@ -38,7 +38,7 @@ export default function Inputs({label , value, min, max, step, calc } : Props) {
                         if(isNaN(num) || num < min) num = min
                         calc(num)
                     }}
-                    className="bg-surface text-primary border w-[90] ml-2 rounded-2xl outline-none px-2 py-1 focus:border-head transition"
+                    className="bg-surface text-primary border w-[90] rounded-2xl outline-none px-2 py-1 focus:border-head transition"
                     />
             </div>
         </div>

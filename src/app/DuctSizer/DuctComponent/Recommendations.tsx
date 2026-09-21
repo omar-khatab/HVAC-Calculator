@@ -58,22 +58,20 @@ function getSuggestions(result: number) {
 export default function Recommendations({result} : Props) {
   const finalSuggestions = getSuggestions(result)
   return (
-    <div className="p-6 bg-primary text-surface rounded-2xl">
-      <div className="flex justify-between mb-5">
-          <h2 className="text-xl font-bold">Suggested Rectangular Sizes • مقاسات مقترحة</h2>
-          <span className="bg-secondary rounded-2xl px-2 py-1">mm = in x 25.4</span>
-      </div>
+    <div className="p-5 bg-primary rounded-2xl lg:col-span-2 lg:row-span-2 text-surface h-fit">
+          <h2 className="md:text-xl font-bold text-[14px] mb-3">Suggested Rectangular Sizes • مقاسات مقترحة</h2>
       {finalSuggestions.map((s,i) => {
         const isBest = i === 0
         return (
-          <div key={`${s.width}x${s.height}`} className=" py-3 border-t border-surface hover:opacity-80 transition flex items-center gap-4">
-            <h3 className={`${isBest ? "bg-white text-primary" : "border"} h-[40] w-[40] text-xl rounded-full flex items-center justify-center`}>{i+1}</h3>
+          <div key={`${s.width}x${s.height}`} className=" last:pb-0 py-3 border-t border-surface hover:opacity-80 transition flex items-center gap-3">
+            <h3 className={`${isBest ? "bg-white text-primary" : "border"} md:h-[40] md:w-[40] h-[30] w-[30] md:text-xl text-[12px] rounded-full flex items-center 
+            justify-center`}>{i+1}</h3>
             <div className=" flex-1">
-              <div className="font-bold text-lg mb-1">
+              <div className="font-bold md:text-[16px] text-[12px]">
                 <span>{`${s.width}" x ${s.height}"`} / </span>
                 <span>{`${(s.width * 25.4).toFixed(0)} mm x ${(s.height * 25.4).toFixed(0)} mm`}</span>
               </div>
-              <p className="">{(s.area).toFixed(0)} in<sup>2</sup> • Ratio {s.ratio}:1 • {isBest ? "Closest to square • الأقرب للمربع" : "Aspect OK"}</p>
+              <p className="md:text-[14px] text-[10px]">{(s.area).toFixed(0)} in<sup>2</sup> • Ratio {s.ratio}:1 • {isBest ? "Closest to square • الأقرب للمربع" : "Aspect OK"}</p>
             </div>
           </div>
         )
