@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HVAC Calculator - BTU & Duct Sizer",
-  description: "Engineering tool built with Next.js + TypeScript by Omar Khatab"
+  title: "HVAC Calculator",
+  description: "Engineering tool - BTU & Duct Sizer calculator"
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

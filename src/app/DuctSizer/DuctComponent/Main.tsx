@@ -31,7 +31,7 @@ const [inputs, setInputs] = useState<DuctSizerInputs>({
           <Inputs label="السرعة (fpm)" value={inputs.velocity} min={100} max={3000} step={50} calc={calcVelocity}/>
         </div>
         {/* UI for Formula */}
-        <div className="bg-primary text-surface rounded-2xl p-4 border-surface border-2 mt-10 flex gap-4 flex-col">
+        <div className="bg-primary text-surface rounded-2xl p-4 border-border border-2 mt-10 flex gap-4 flex-col">
           <h3 className="text-head text-xl font-bold ">FORMULA • المعادلة</h3>
           <p>Area = CFM / Velocity</p>
           <p>{inputs.cfm} / {inputs.velocity} = {result} ft<sup>2</sup></p>

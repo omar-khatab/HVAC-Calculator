@@ -63,7 +63,7 @@ export default function Recommendations({result} : Props) {
       {finalSuggestions.map((s,i) => {
         const isBest = i === 0
         return (
-          <div key={`${s.width}x${s.height}`} className=" last:pb-0 py-3 border-t border-surface hover:opacity-80 transition flex items-center gap-3">
+          <div key={`${s.width}x${s.height}`} className=" last:pb-0 py-3 border-t border-border hover:opacity-80 transition flex items-center gap-3">
             <h3 className={`${isBest ? "bg-white text-primary" : "border"} md:h-[40] md:w-[40] h-[30] w-[30] md:text-xl text-[12px] rounded-full flex items-center 
             justify-center`}>{i+1}</h3>
             <div className=" flex-1">

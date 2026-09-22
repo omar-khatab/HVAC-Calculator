@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 60 820 200" width="850" height="200">
+  <g fill="none" stroke="#0F172A" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="40" y="90" width="200" height="140" rx="26"/>
+    <line x1="240" y1="75" x2="240" y2="245"/>
+  </g>
+  <g fill="#0EA5E9" stroke="#0EA5E9" stroke-width="14" stroke-linecap="round">
+    <line x1="70" y1="135" x2="210" y2="135"/>
+    <polygon points="210,115 210,155 234,135"/>
+    <line x1="70" y1="175" x2="210" y2="175"/>
+    <polygon points="210,155 210,195 234,175"/>
+  </g>
+  <text x="300" y="165" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="800" font-size="110" letter-spacing="-3" fill="#0F172A">HVAC</text>
+  <text x="304" y="235" font-family="Inter, system-ui, sans-serif" font-weight="500" font-size="42" letter-spacing="8" fill="#64748B">CALCULATOR</text>
+</svg>

@@ -24,7 +24,7 @@ export default function Recommendations({ result} : Props) {
     ]
     return (
         <div className="p-6 bg-primary rounded-2xl lg:col-span-2">
-            <div className="text-head  flex justify-between items-center pb-5 border-b border-surface">
+            <div className="text-head  flex justify-between items-center pb-5 border-b border-border">
                 <span className="md:text-2xl">Recommendation • التوصية حسب الطن</span>
                 <span className="bg-secondary p-2 rounded-2xl text-[14px]"> {recommendationCard.map((r) => {
                     return r.status ? r.ton : ""

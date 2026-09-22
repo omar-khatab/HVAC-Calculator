@@ -7,7 +7,7 @@ export default function Footer() {
 
           href="https://github.com/omar-khatab"
           target="_blank"
-          className="text-primary hover:underline"
+          className="text-accent hover:underline"
         >
         <span className="mx-1"> Omar Khatab</span>
         </a>

@@ -56,7 +56,7 @@ export default function Main() {
                     })}
                 </div>
                 {/* UI for formula */}
-                <div className="bg-primary text-surface rounded-2xl p-4 border-surface border-2 flex flex-col gap-1.5">
+                <div className="bg-primary text-surface rounded-2xl p-4 border-border border-2 flex flex-col gap-1.5">
                     <h3 className="text-head text-xl font-bold mb-1">FORMULA • المعادلة</h3>
                     <p> Base = Area x 40</p>
                     <p> {inputs.roomArea } x 40 = <span>{base.toLocaleString()}</span></p>
