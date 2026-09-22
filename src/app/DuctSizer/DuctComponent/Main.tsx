@@ -23,7 +23,7 @@ const [inputs, setInputs] = useState<DuctSizerInputs>({
     }
 
   return (
-    <div className="grid lg:grid-cols-3 lg:grid-rows-3 w-full max-w-7xl mx-auto px-4 gap-4 grid-cols-1 row-span-1 mt-[100]">
+    <div className="grid lg:grid-cols-3 lg:grid-rows-3 w-full max-w-7xl mx-auto px-4 gap-4 grid-cols-1 row-span-1 pb-[40] pt-[80]">
       <div className=" bg-primary text-surface p-5 rounded-2xl lg:row-span-3">
         <div>
           <h2 className="text-xl font-extrabold mb-2 text-head flex item-center gap-2">

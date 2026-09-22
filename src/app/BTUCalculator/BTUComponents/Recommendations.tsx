@@ -25,12 +25,9 @@ export default function Recommendations({ result} : Props) {
     ]
     return (
         <div className="p-6 bg-primary rounded-2xl lg:col-span-2">
-            <div className="text-head  flex justify-between items-center pb-5 border-b border-border">
-                <h2 className="md:text-2xl flex items-center gap-1"> <Layers strokeWidth={1.5} />Recommendation • التوصية حسب الطن</h2>
-                <span className="bg-secondary p-2 rounded-2xl text-[14px]"> {recommendationCard.map((r) => {
-                    return r.status ? r.ton : ""
-                })} • ACTIVE</span>
-            </div>
+            <h2 className="md:text-2xl text-[17px] flex items-center gap-1 text-head pb-5 border-b border-border"> 
+                <Layers strokeWidth={1.5} size={20}/>Recommendation • التوصية حسب الطن
+            </h2>
             <ul className="grid md:grid-cols-3 gap-3 py-4">
                 {recommendationCard.map((r) => {
             return <li key={r.id} className={`list-none p-2 rounded-2xl
@@ -44,7 +41,7 @@ export default function Recommendations({ result} : Props) {
             })}
             </ul>
             <div className="bg-amber-200/70 rounded-2xl px-4 py-2">
-                <div className="flex item-center gap-1">
+                <div className="flex item-center gap-1 flex-wrap">
                     <Snowflake strokeWidth={1.5} className="h-7 w-7 text-primary rounded-full bg-amber-200"/>
                     <span className="text-xl font-bold">Recommended</span> : {recommendationCard.map((r) => {
                     return r.status ? <span key={r.id} className="text-xl font-bold">{r.space}</span> : "" 

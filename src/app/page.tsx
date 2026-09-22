@@ -4,7 +4,7 @@ import { Wind, Calculator, ArrowRight, Box, Zap } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="max-w-7xl mx-auto px-4 mt-24 pb-20 flex flex-col items-center text-center">
+    <div className="max-w-7xl mx-auto px-4 pt-[80] pb-20 flex flex-col items-center text-center">
       {/* Hero */}
       <div className="mb-16 max-w-2xl">
         <span className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-1.5 rounded-full text- font-semibold mb-6 border border-accent/20">

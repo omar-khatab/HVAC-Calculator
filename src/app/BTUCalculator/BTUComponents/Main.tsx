@@ -36,7 +36,7 @@ export default function Main() {
 
     return (
         <div className="w-full max-w-7xl mx-auto px-4  grid lg:grid-cols-3 lg:grid-rows-2 gap-4
-        grid-cols-1 grid-rows-1 mt-[100]">
+            grid-cols-1 grid-rows-1 pb-[40] pt-[80]">
             <div className="p-6 bg-primary text-surface rounded-2xl flex flex-col justify-between lg:row-span-2">
                 <h2 className="text-xl font-extrabold text-head flex gap-2 items-center mb-2">
                     <ThermometerSnowflake size={30} strokeWidth={1.5} />BTU Calculator
@@ -47,14 +47,14 @@ export default function Main() {
                 <Inputs Icon={PanelsTopLeft} label="شبابيك" min={0} max={20}value={inputs.window} calc = {calcWindows}/>
                 {/* Sun Exposure selection */}
                     <h3 className="py-2 flex item-center gap-1"><Sun strokeWidth={1.5} />SUN EXPOSURE • التعرض للشمس </h3>
-                <div className="flex mb-3 py-2 gap-2">
+                <div className="flex mb-3 gap-2 bg-secondary rounded-full justify-between">
                     {[1 , 1.2 , 1.4].map((val) => {
-                    return <label key={val} className={`cursor-pointer rounded-2xl p-2 font-medium text-sm
-                                    ${inputs.sunExposure === val ? "bg-surface text-primary" : "bg-secondary text-surface"}`}>
+                    return <label key={val} className={`cursor-pointer rounded-full px-4 py-2 font-medium md:text-[12px] text-[10px] text-center
+                                    ${inputs.sunExposure === val ? "bg-surface text-primary" : " text-surface"}`}>
                                 <input type="radio" name="sun" checked = {inputs.sunExposure === val}
                                     onChange = {() => setInputs({...inputs, sunExposure : val})}
                                     className="hidden"/>
-                                {val === 1 ? "No Sun x 1" : val === 1.2 ? "Medium Sun x 1.2": "High Sun x 1.4"}
+                                {val === 1 ? <span>No Sun x 1 <br/>بدون شمس</span> : val === 1.2 ? <span>Medium Sun x 1.2<br/> متوسط</span>: <span>High Sun x 1.4<br/> عالى</span>}
                         </label>
                     })}
                 </div>

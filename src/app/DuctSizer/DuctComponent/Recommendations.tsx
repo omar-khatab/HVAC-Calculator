@@ -60,11 +60,11 @@ function getSuggestions(result: number) {
 export default function Recommendations({result} : Props) {
   const finalSuggestions = getSuggestions(result)
   return (
-    <div className="p-5 bg-primary rounded-2xl lg:col-span-2 lg:row-span-2 text-surface h-fit">
+    <div className="p-5 bg-primary rounded-2xl lg:col-span-2 lg:row-span-2 text-head h-fit">
           <h2 className="md:text-xl font-bold text-[14px] mb-3 flex item-center gap-1">
-            <Cuboid size={30} strokeWidth={1.5} />
+            <Cuboid size={25} strokeWidth={1.5} />
             Suggested Rectangular Sizes • مقاسات مقترحة
-            </h2>
+          </h2>
       {finalSuggestions.map((s,i) => {
         const isBest = i === 0
         return (
