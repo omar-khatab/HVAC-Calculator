@@ -1,18 +1,20 @@
 import Link from "next/link";
 import Footer from "./components/Footer";
+import { Wind, Calculator, ArrowRight, Box, Zap } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="max-w-7xl mx-auto px-4 mt-[100] pb-[80] flex flex-col items-center text-center">
+    <div className="max-w-7xl mx-auto px-4 mt-24 pb-20 flex flex-col items-center text-center">
       {/* Hero */}
       <div className="mb-16 max-w-2xl">
-        <span className="inline-block bg-secondary/10 text-accent px-4 py-1 rounded-full text-sm font-semibold mb-4">
+        <span className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-1.5 rounded-full text- font-semibold mb-6 border border-accent/20">
+          <Box className="w-3.5 h-3.5" />
           Next.js • TypeScript • Tailwind
         </span>
-        <h1 className="text-4xl md:text-5xl font-extrabold text-primary mb-4">
-          HVAC Engineering Calculator
+        <h1 className="text-4xl md:text-5xl font-extrabold text-primary mb-4 tracking-tight leading-tight">
+          HVAC Engineering <span className="text-accent">Calculator</span>
         </h1>
-        <p className="text-secondary text-lg">
+        <p className="text-secondary text- leading-6">
           Interactive tools that apply real HVAC formulas — cooling load
           estimation and duct sizing — built to bridge Mechanical Power
           Engineering with frontend development.
@@ -24,52 +26,54 @@ export default function Home() {
 
         <Link
           href="/BTUCalculator"
-          className="group bg-primary text-accent rounded-2xl p-8 text-left
-                     border-2 border-transparent hover:border-accent
-                     transition-all hover:-translate-y-1"
+          className="group bg-head border border-border rounded- p-8 text-left rounded-2xl
+                  hover:border-primary/20 hover:shadow-[0_10px_40px_-20px_rgba(0,0,0,0.15)]
+                    transition-all hover:-translate-y-1"
         >
-          <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18m0-18l-3 3m3-3l3 3m-3 15l-3-3m3 3l3-3M3 12h18m-18 0l3-3m-3 3l3 3m15-3l-3-3m3 3l-3 3" />
-            </svg>
+          <div className="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/15 transition-colors">
+            <Calculator className="w-6 h-6 text-accent" />
           </div>
-          <h2 className="text-xl font-bold text-head mb-2">
+          <h2 className="text- font-bold text-primary mb-2">
             BTU Calculator
           </h2>
-          <p className="text-sm text-accent/80 mb-4">
+          <p className="text- text-secondary leading-5 mb-5">
             Estimate cooling load based on room area, occupancy, and sun exposure.
           </p>
-          <span className="text-surface text-sm font-semibold inline-flex items-center gap-1">
+          <span className="text-primary text- font-semibold inline-flex items-center gap-1.5">
             Open calculator
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </span>
         </Link>
 
         <Link
           href="/DuctSizer"
-          className="group bg-primary text-accent rounded-2xl p-8 text-left
-                     border-2 border-transparent hover:border-accent
+          className="group bg-head border border-border rounded- p-8 text-left rounded-2xl
+                     hover:border-primary/20 hover:shadow-[0_10px_40px_-20px_rgba(0,0,0,0.15)]
                      transition-all hover:-translate-y-1"
         >
-          <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <rect x="3" y="9" width="18" height="6" rx="1" strokeLinecap="round" strokeLinejoin="round" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 12h18" />
-            </svg>
+          <div className="w-12 h-12 rounded-2xl bg-primary/5 border border-border flex items-center justify-center mb-4 group-hover:bg-primary/10 transition-colors">
+            <Wind className="w-6 h-6 text-primary" />
           </div>
-          <h2 className="text-xl font-bold text-head mb-2">
+          <h2 className="text- font-bold text-primary mb-2">
             Duct Sizer
           </h2>
-          <p className="text-sm text-accent/80 mb-4">
+          <p className="text- text-secondary leading-5 mb-5">
             Calculate duct area, diameter, and suggested rectangular sizes.
           </p>
-          <span className="text-surface text-sm font-semibold inline-flex items-center gap-1">
+          <span className="text-primary text- font-semibold inline-flex items-center gap-1.5">
             Open calculator
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </span>
         </Link>
-
       </div>
+
+      {/* Small trust bar */}
+      <div className="mt-12 flex items-center gap-6 text- text-secondary/60">
+        <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5" /> Real formulas</span>
+        <span className="flex items-center gap-1.5"><Box className="w-3.5 h-3.5" /> No backend</span>
+        <span className="flex items-center gap-1.5"><Wind className="w-3.5 h-3.5" /> SMACNA based</span>
+      </div>
+
       <Footer/>
     </div>
   );

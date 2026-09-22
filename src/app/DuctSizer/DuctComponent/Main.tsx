@@ -5,6 +5,7 @@ import { useState } from "react";
 import Recommendations from "./Recommendations";
 import Outputs from "./Outputs";
 import Inputs from "@/app/components/Inputs";
+import { CircleGauge, Sigma, SquareChartGantt, Wind } from "lucide-react";
 
 export default function Main() {
 const [inputs, setInputs] = useState<DuctSizerInputs>({
@@ -25,14 +26,16 @@ const [inputs, setInputs] = useState<DuctSizerInputs>({
     <div className="grid lg:grid-cols-3 lg:grid-rows-3 w-full max-w-7xl mx-auto px-4 gap-4 grid-cols-1 row-span-1 mt-[100]">
       <div className=" bg-primary text-surface p-5 rounded-2xl lg:row-span-3">
         <div>
-          <h2 className="text-xl font-extrabold mb-4 text-head">Duct Sizer</h2>
+          <h2 className="text-xl font-extrabold mb-2 text-head flex item-center gap-2">
+            <SquareChartGantt size={30} strokeWidth={1.5} />
+            Duct Sizer</h2>
           {/* custom component for inputs */}
-          <Inputs label="AIRFLOW • معدل التدفق (CFM)" value={inputs.cfm} min={0} max={10000} step={50} calc={calcCFM}/>
-          <Inputs label="السرعة (fpm)" value={inputs.velocity} min={100} max={3000} step={50} calc={calcVelocity}/>
+          <Inputs Icon = {Wind} label="AIRFLOW • معدل التدفق (CFM)" value={inputs.cfm} min={0} max={10000} step={50} calc={calcCFM}/>
+          <Inputs Icon = {CircleGauge} label="السرعة (fpm)" value={inputs.velocity} min={100} max={3000} step={50} calc={calcVelocity}/>
         </div>
         {/* UI for Formula */}
         <div className="bg-primary text-surface rounded-2xl p-4 border-border border-2 mt-10 flex gap-4 flex-col">
-          <h3 className="text-head text-xl font-bold ">FORMULA • المعادلة</h3>
+          <h3 className="text-head text-xl font-bold flex item-center gap-1"><Sigma/>FORMULA • المعادلة</h3>
           <p>Area = CFM / Velocity</p>
           <p>{inputs.cfm} / {inputs.velocity} = {result} ft<sup>2</sup></p>
           <p>{(result * 144).toFixed(1)} in<sup>2</sup> • {(result * 929.0304).toFixed(0)} cm<sup>2</sup></p>

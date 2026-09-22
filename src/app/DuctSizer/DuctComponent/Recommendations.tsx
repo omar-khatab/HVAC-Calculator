@@ -1,3 +1,5 @@
+import { Cuboid } from "lucide-react";
+
 type Props = {
   result : number,
 }
@@ -10,7 +12,7 @@ function getSuggestions(result: number) {
   // 1. احسب الارتفاع المناسب | Calculate the appropriate height
   // 2. قرّبه لرقم زوجي | Round it to an even number
   // 3. ارفضه لو برّه النطاق المعقول (6-48) | Reject if outside the reasonable range (6–48)
-  // 4. %ارفضه لو الخطأ في المساحة أكبر من 15 | Reject if the area error exceeds 15%
+  // 4. %ارفضه لو الخطأ في المساحة أكبر من 10 | Reject if the area error exceeds 10%
   // 5. ارفضه لو الشكل نحيف جدًا (نسبة أكبر من 4:1) | Reject if the shape is too slender (ratio greater than 4:1)
   // 6. (12x16)(16x12) امنع تكرار المقاسات | Prevent duplicate dimensions (e.g., 12x16 and 16x12)
   // 7. اقبله لو عدى كل الشروط | Accept if all conditions are met
@@ -33,7 +35,7 @@ function getSuggestions(result: number) {
     // 4
     const actualArea = width * height
     const errorPercent = Math.abs(actualArea - areaSqInch) / areaSqInch
-    if (errorPercent > 0.15) continue
+    if (errorPercent > 0.1) continue
     // 5
     const aspectRatio = Math.max(width, height) / Math.min(width, height)
     if (aspectRatio > 4) continue
@@ -59,7 +61,10 @@ export default function Recommendations({result} : Props) {
   const finalSuggestions = getSuggestions(result)
   return (
     <div className="p-5 bg-primary rounded-2xl lg:col-span-2 lg:row-span-2 text-surface h-fit">
-          <h2 className="md:text-xl font-bold text-[14px] mb-3">Suggested Rectangular Sizes • مقاسات مقترحة</h2>
+          <h2 className="md:text-xl font-bold text-[14px] mb-3 flex item-center gap-1">
+            <Cuboid size={30} strokeWidth={1.5} />
+            Suggested Rectangular Sizes • مقاسات مقترحة
+            </h2>
       {finalSuggestions.map((s,i) => {
         const isBest = i === 0
         return (

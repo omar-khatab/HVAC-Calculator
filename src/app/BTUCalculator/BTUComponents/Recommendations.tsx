@@ -1,3 +1,4 @@
+import { Layers, Snowflake } from "lucide-react"
 
 type Props = {
     result : number,
@@ -25,7 +26,7 @@ export default function Recommendations({ result} : Props) {
     return (
         <div className="p-6 bg-primary rounded-2xl lg:col-span-2">
             <div className="text-head  flex justify-between items-center pb-5 border-b border-border">
-                <span className="md:text-2xl">Recommendation • التوصية حسب الطن</span>
+                <h2 className="md:text-2xl flex items-center gap-1"> <Layers strokeWidth={1.5} />Recommendation • التوصية حسب الطن</h2>
                 <span className="bg-secondary p-2 rounded-2xl text-[14px]"> {recommendationCard.map((r) => {
                     return r.status ? r.ton : ""
                 })} • ACTIVE</span>
@@ -42,9 +43,13 @@ export default function Recommendations({ result} : Props) {
                 </li>
             })}
             </ul>
-            <div className="bg-amber-200 rounded-2xl px-4 py-2"><span className="text-xl font-bold">Recommended</span> : {recommendationCard.map((r) => {
-                return r.status ? <span key={r.id} className="text-xl font-bold">{r.space}</span> : "" 
-                })}
+            <div className="bg-amber-200/70 rounded-2xl px-4 py-2">
+                <div className="flex item-center gap-1">
+                    <Snowflake strokeWidth={1.5} className="h-7 w-7 text-primary rounded-full bg-amber-200"/>
+                    <span className="text-xl font-bold">Recommended</span> : {recommendationCard.map((r) => {
+                    return r.status ? <span key={r.id} className="text-xl font-bold">{r.space}</span> : "" 
+                    })}
+                </div>
                 <p>Calculated {result} BTU → {(result / 12000).toFixed(2)} Tons. For best efficiency, round up to next available unit size. 
                 </p>
             </div>

@@ -1,5 +1,7 @@
+import { LucideIcon } from "lucide-react"
 
 type Props = {
+    Icon : LucideIcon
     label : string
     value: number,
     min : number
@@ -8,12 +10,12 @@ type Props = {
     calc: ( value : number) => void,
 }
 
-export default function Inputs({label , value, min, max, step, calc } : Props) {
+export default function Inputs({ Icon, label , value, min, max, step, calc } : Props) {
     
     return (
-        <div className="py-2">
+        <div className="py-2 flex-1">
             <label className="mb-1.5 flex justify-between text-surface">
-                <span>{label}</span>
+                <span className="flex item-center gap-1"><Icon className="w-4 h-6"/>{label}</span>
                 <span>{value}</span>
             </label>
             <div className="flex flex-wrap gap-3">

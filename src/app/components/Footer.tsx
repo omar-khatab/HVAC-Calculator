@@ -1,7 +1,7 @@
 
 export default function Footer() {
   return (
-    <div className=" bg-secondary text-surface w-full p-3 fixed bottom-0 left-0  md:text-[14px] text-[12px]">
+    <div className=" bg-primary text-surface w-full p-3 fixed bottom-0 left-0  md:text-[14px] text-[12px]">
         <span>Built by</span>
         <a 
 
