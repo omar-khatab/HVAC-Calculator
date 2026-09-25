@@ -10,14 +10,14 @@ import { Box, PanelsTopLeft, Sigma, Sun,ThermometerSnowflake, Users } from "luci
 export default function Main() {
 
     const [inputs , setInputs] = useState<BTUInputs>({
-        roomArea : 50,
+        roomArea : 10,
         occupants : 1,
         window : 1,
         sunExposure : 1,
     })
 
     // Formula and Calculations
-    const base = inputs.roomArea * 40;
+    const base = inputs.roomArea * 430;
     const windows = inputs.window * 1000
     const sub = (base + windows) * inputs.sunExposure
     const people = inputs.occupants * 600
@@ -42,7 +42,7 @@ export default function Main() {
                     <ThermometerSnowflake size={30} strokeWidth={1.5} />BTU Calculator
                 </h2>
                 {/* custom component for inputs */}
-                <Inputs Icon={Box} label="مساحة الغرفة (sq ft)" min={50} max={2000} step={10} value={inputs.roomArea} calc = {calcRoomArea}/>
+                <Inputs Icon={Box} label="مساحة الغرفة (sq m)" min={10} max={2000} step={5} value={inputs.roomArea} calc = {calcRoomArea}/>
                 <Inputs Icon = {Users} label="عدد الاشخاص" min={0} max={100} value={inputs.occupants}calc = {calcOccupants}/>
                 <Inputs Icon={PanelsTopLeft} label="شبابيك" min={0} max={20}value={inputs.window} calc = {calcWindows}/>
                 {/* Sun Exposure selection */}
@@ -54,15 +54,16 @@ export default function Main() {
                                 <input type="radio" name="sun" checked = {inputs.sunExposure === val}
                                     onChange = {() => setInputs({...inputs, sunExposure : val})}
                                     className="hidden"/>
-                                {val === 1 ? <span>No Sun x 1 <br/>بدون شمس</span> : val === 1.2 ? <span>Medium Sun x 1.2<br/> متوسط</span>: <span>High Sun x 1.4<br/> عالى</span>}
+                                {val === 1 ? <span>No Sun x 1 <br/>بدون شمس</span> : val === 1.2 ? <span>Medium Sun x 1.2<br/> متوسط</span> : 
+                                <span>High Sun x 1.4<br/> عالى</span>}
                         </label>
                     })}
                 </div>
                 {/* UI for formula */}
                 <div className="bg-primary text-surface rounded-2xl p-4 border-border border-2 flex flex-col gap-1.5">
                         <h3 className="text-head text-xl font-bold mb-1 flex item-center gap-1"><Sigma strokeWidth={1.5} />FORMULA • المعادلة</h3>
-                    <p> Base = Area x 40</p>
-                    <p> {inputs.roomArea } x 40 = <span>{base.toLocaleString()}</span></p>
+                    <p> Base = Area x 430</p>
+                    <p> {inputs.roomArea } x 430 = <span>{base.toLocaleString()}</span></p>
                     <p>+ windows : {inputs.window} x 1,000 = <span>{windows.toLocaleString()}</span></p>
                     <p>sub = (Base + Windows) x <span>{inputs.sunExposure}</span> (sun)</p>
                     <p>sub = {(base + windows).toLocaleString()} x <span>{inputs.sunExposure}</span> = {sub.toLocaleString()}</p>
