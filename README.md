@@ -6,8 +6,6 @@
 
 [[Live Demo](https://img.shields.io/badge/🚀_Live_Demo-hvac--calculator--ebon.vercel.app-22C55E?style=for-the-badge&logo=vercel)](https://hvac-calculator-ebon.vercel.app/)
 [[GitHub](https://img.shields.io/badge/💻_Source_Code-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/omar-khatab/HVAC-Calculator)
-[[Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[[TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 
 <br>
 
