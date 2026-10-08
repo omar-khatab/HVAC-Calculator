@@ -63,7 +63,7 @@ This project bridges mechanical engineering domain knowledge with modern web dev
 
 ### 1. BTU Cooling Load (Simplified Field Method)
 ```
-Base BTU = Area (sq ft) × 35
+Base BTU = Area (sq m) × 430
 Total BTU = Base BTU + (Occupants × 600) + (Appliances × 1000)
 ```
 
