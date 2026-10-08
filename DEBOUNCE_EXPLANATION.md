@@ -127,7 +127,7 @@ NEW behavior:
 
 ---
 
-## Why This Matters for Your Project
+## Improvements Made
 
 ### Performance Benefits:
 
