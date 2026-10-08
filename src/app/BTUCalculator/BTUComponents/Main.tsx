@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { BTUInputs} from "../../Types/hvac"
 import Outputs from "./Outputs"
 import Inputs from "../../components/Inputs"
@@ -16,11 +16,21 @@ export default function Main() {
         sunExposure : 1,
     })
 
-    // Formula and Calculations
-    const base = inputs.roomArea * 430;
-    const windows = inputs.window * 1000
-    const sub = (base + windows) * inputs.sunExposure
-    const people = inputs.occupants * 600
+    // Debounce: Delay calculations until user stops typing
+    const [debouncedInputs, setDebouncedInputs] = useState(inputs)
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDebouncedInputs(inputs)
+        }, 200) // Wait 200ms after last change
+        return () => clearTimeout(timer)
+    }, [inputs])
+
+    // Formula and Calculations (use debounced values)
+    const base = debouncedInputs.roomArea * 430;
+    const windows = debouncedInputs.window * 1000
+    const sub = (base + windows) * debouncedInputs.sunExposure
+    const people = debouncedInputs.occupants * 600
     const result = people + sub
 
     // update fields
@@ -63,11 +73,11 @@ export default function Main() {
                 <div className="bg-primary text-surface rounded-2xl p-4 border-border border-2 flex flex-col gap-1.5">
                         <h3 className="text-head text-xl font-bold mb-1 flex item-center gap-1"><Sigma strokeWidth={1.5} />FORMULA • المعادلة</h3>
                     <p> Base = Area x 430</p>
-                    <p> {inputs.roomArea } x 430 = <span>{base.toLocaleString()}</span></p>
-                    <p>+ windows : {inputs.window} x 1,000 = <span>{windows.toLocaleString()}</span></p>
-                    <p>sub = (Base + Windows) x <span>{inputs.sunExposure}</span> (sun)</p>
-                    <p>sub = {(base + windows).toLocaleString()} x <span>{inputs.sunExposure}</span> = {sub.toLocaleString()}</p>
-                    <p>+ People : {inputs.occupants} x 600 = <span>{people.toLocaleString()}</span></p>
+                    <p> {debouncedInputs.roomArea } x 430 = <span>{base.toLocaleString()}</span></p>
+                    <p>+ windows : {debouncedInputs.window} x 1,000 = <span>{windows.toLocaleString()}</span></p>
+                    <p>sub = (Base + Windows) x <span>{debouncedInputs.sunExposure}</span> (sun)</p>
+                    <p>sub = {(base + windows).toLocaleString()} x <span>{debouncedInputs.sunExposure}</span> = {sub.toLocaleString()}</p>
+                    <p>+ People : {debouncedInputs.occupants} x 600 = <span>{people.toLocaleString()}</span></p>
                     <h3>= {result.toLocaleString()} BTU = {(result / 12000).toFixed(2)} Ton</h3>
                 </div>
             </div>

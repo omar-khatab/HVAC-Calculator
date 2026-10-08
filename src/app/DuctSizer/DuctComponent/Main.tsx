@@ -1,7 +1,7 @@
 "use client"
 
 import { DuctSizerInputs } from "@/app/Types/hvac";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Recommendations from "./Recommendations";
 import Outputs from "./Outputs";
 import Inputs from "@/app/components/Inputs";
@@ -13,7 +13,17 @@ const [inputs, setInputs] = useState<DuctSizerInputs>({
     velocity : 100,
 })
 
-  const result : number = parseFloat((inputs.cfm / inputs.velocity).toFixed(2))
+  // Debounce: Delay calculations until user stops typing
+  const [debouncedInputs, setDebouncedInputs] = useState(inputs)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedInputs(inputs)
+    }, 200) // Wait 200ms after last change
+    return () => clearTimeout(timer)
+  }, [inputs])
+
+  const result : number = parseFloat((debouncedInputs.cfm / debouncedInputs.velocity).toFixed(2))
 
   function calcCFM(value : number) {
         setInputs({...inputs, cfm : value})
@@ -37,7 +47,7 @@ const [inputs, setInputs] = useState<DuctSizerInputs>({
         <div className="bg-primary text-surface rounded-2xl p-4 border-border border-2 mt-10 flex gap-4 flex-col">
           <h3 className="text-head text-xl font-bold flex item-center gap-1"><Sigma/>FORMULA • المعادلة</h3>
           <p>Area = CFM / Velocity</p>
-          <p>{inputs.cfm} / {inputs.velocity} = {result} ft<sup>2</sup></p>
+          <p>{debouncedInputs.cfm} / {debouncedInputs.velocity} = {result} ft<sup>2</sup></p>
           <p>{(result * 144).toFixed(1)} in<sup>2</sup> • {(result * 929.0304).toFixed(0)} cm<sup>2</sup></p>
         </div>
       </div>
