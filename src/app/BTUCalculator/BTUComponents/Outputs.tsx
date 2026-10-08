@@ -2,17 +2,17 @@ import { BTUInputs } from "@/app/Types/hvac"
 import { ArrowUpToLine, Grid2x2, Snowflake, Zap} from "lucide-react"
 
 type Props = {
-    result: number,
-    inputs : BTUInputs,
+    result: number
+    inputs: BTUInputs
 }
 
-export default function Outputs({result, inputs} : Props) {
-    const roomSpace : {id : number, title : string, value : number}[] = [
-        {id :1, title : "Area • المساحة", value : inputs.roomArea},
-        {id :2, title : "Base load", value :  inputs.roomArea * 430},
-        {id :3, title : "People", value :  inputs.occupants},
-        {id :4, title : "Windows", value :  inputs.window},
-        {id :5, title : "Sun Exposure", value :  inputs.sunExposure},
+export default function Outputs({result, inputs}: Props) {
+    const roomSpace: {id: number, title: string, value: number}[] = [
+        {id: 1, title: "Area • المساحة", value: inputs.roomArea},
+        {id: 2, title: "Base load", value: inputs.roomArea * 430},
+        {id: 3, title: "People", value: inputs.occupants},
+        {id: 4, title: "Windows", value: inputs.window},
+        {id: 5, title: "Sun Exposure", value: inputs.sunExposure},
     ]
 return (
     <div className="bg-primary text-surface p-6 rounded-2xl lg:col-span-2">
@@ -44,9 +44,9 @@ return (
             </div>
             <div className="bg-secondary rounded-2xl p-4 md:w-[250] w-full h-fit flex flex-col gap-2">
                 <h3 className="font-bold flex item-center gap-1"><Grid2x2 className="w-4" strokeWidth={1.5} />ROOM SPACE</h3>
-                {roomSpace.map((e,i) => {
+                {roomSpace.map((e, i) => {
                     const fit = i === 0 || i === 1
-                    return <div key = {e.id} className="flex justify-between">
+                    return <div key={e.id} className="flex justify-between">
                         <span>{e.title}</span>
                         <span>{`${e.value.toLocaleString()}`} {fit ? `m`  : null}{fit ? <sup>2</sup> : null}</span>
                     </div>

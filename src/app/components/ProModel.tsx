@@ -1,8 +1,8 @@
 import Image from "next/image"
 
 type Prop = {
-    showPro : boolean,
-    setShowPro : (value : boolean) => void
+    showPro: boolean
+    setShowPro: (value: boolean) => void
 }
 
 

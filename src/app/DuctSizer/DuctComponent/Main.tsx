@@ -8,10 +8,10 @@ import Inputs from "@/app/components/Inputs";
 import { CircleGauge, Sigma, SquareChartGantt, Wind } from "lucide-react";
 
 export default function Main() {
-const [inputs, setInputs] = useState<DuctSizerInputs>({
-    cfm : 100,
-    velocity : 100,
-})
+  const [inputs, setInputs] = useState<DuctSizerInputs>({
+    cfm: 100,
+    velocity: 100,
+  })
 
   // Debounce: Delay calculations until user stops typing
   const [debouncedInputs, setDebouncedInputs] = useState(inputs)
@@ -25,12 +25,12 @@ const [inputs, setInputs] = useState<DuctSizerInputs>({
 
   const result : number = parseFloat((debouncedInputs.cfm / debouncedInputs.velocity).toFixed(2))
 
-  function calcCFM(value : number) {
-        setInputs({...inputs, cfm : value})
-    }
-  function calcVelocity(value : number) {
-        setInputs({...inputs, velocity : value})
-    }
+  function calcCFM(value: number) {
+    setInputs({...inputs, cfm: value})
+  }
+  function calcVelocity(value: number) {
+    setInputs({...inputs, velocity: value})
+  }
 
   return (
     <div className="grid lg:grid-cols-3 lg:grid-rows-3 w-full max-w-7xl mx-auto px-4 gap-4 grid-cols-1 row-span-1 pb-[40] pt-[80]">
@@ -40,8 +40,8 @@ const [inputs, setInputs] = useState<DuctSizerInputs>({
             <SquareChartGantt size={30} strokeWidth={1.5} />
             Duct Sizer</h2>
           {/* custom component for inputs */}
-          <Inputs Icon = {Wind} label="AIRFLOW • معدل التدفق (CFM)" value={inputs.cfm} min={0} max={10000} step={50} calc={calcCFM}/>
-          <Inputs Icon = {CircleGauge} label="السرعة (fpm)" value={inputs.velocity} min={100} max={3000} step={50} calc={calcVelocity}/>
+          <Inputs Icon={Wind} label="AIRFLOW • معدل التدفق (CFM)" value={inputs.cfm} min={0} max={10000} step={50} calc={calcCFM}/>
+          <Inputs Icon={CircleGauge} label="السرعة (fpm)" value={inputs.velocity} min={100} max={3000} step={50} calc={calcVelocity}/>
         </div>
         {/* UI for Formula */}
         <div className="bg-primary text-surface rounded-2xl p-4 border-border border-2 mt-10 flex gap-4 flex-col">

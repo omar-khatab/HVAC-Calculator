@@ -12,9 +12,9 @@ export default function NavBar() {
     const [open, setOpen] = useState(false)
     const [showPro, setShowPro] = useState(false)
     const navLinks = [
-        {id: 0, title: "Home", link: "/", icon : <House size={20} strokeWidth={1.5} />},
-        {id: 1, title: "DuctSizer", link: "/DuctSizer" , icon : <SquareChartGantt size={20} strokeWidth={1.5} />},
-        {id: 2, title: "BTUCalculator", link: "/BTUCalculator", icon :  <ThermometerSnowflake size={20} strokeWidth={1.5} />},
+        {id: 0, title: "Home", link: "/", icon: <House size={20} strokeWidth={1.5} />},
+        {id: 1, title: "DuctSizer", link: "/DuctSizer", icon: <SquareChartGantt size={20} strokeWidth={1.5} />},
+        {id: 2, title: "BTUCalculator", link: "/BTUCalculator", icon: <ThermometerSnowflake size={20} strokeWidth={1.5} />},
     ]
 
     return (
@@ -94,7 +94,7 @@ export default function NavBar() {
             )}
         </div>
         {/* model of Get Pro button */}
-        <ProModel showPro = {showPro} setShowPro={setShowPro}/>
+        <ProModel showPro={showPro} setShowPro={setShowPro}/>
         </>
     )
 }

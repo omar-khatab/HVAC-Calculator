@@ -9,11 +9,11 @@ import { Box, PanelsTopLeft, Sigma, Sun,ThermometerSnowflake, Users } from "luci
 
 export default function Main() {
 
-    const [inputs , setInputs] = useState<BTUInputs>({
-        roomArea : 10,
-        occupants : 1,
-        window : 1,
-        sunExposure : 1,
+    const [inputs, setInputs] = useState<BTUInputs>({
+        roomArea: 10,
+        occupants: 1,
+        window: 1,
+        sunExposure: 1,
     })
 
     // Debounce: Delay calculations until user stops typing
@@ -28,20 +28,20 @@ export default function Main() {
 
     // Formula and Calculations (use debounced values)
     const base = debouncedInputs.roomArea * 430;
-    const windows = debouncedInputs.window * 1000
-    const sub = (base + windows) * debouncedInputs.sunExposure
-    const people = debouncedInputs.occupants * 600
-    const result = people + sub
+    const windows = debouncedInputs.window * 1000;
+    const sub = (base + windows) * debouncedInputs.sunExposure;
+    const people = debouncedInputs.occupants * 600;
+    const result = people + sub;
 
     // update fields
-    function calcRoomArea(value : number) {
-        setInputs({...inputs, roomArea : value})
+    function calcRoomArea(value: number) {
+        setInputs({...inputs, roomArea: value})
     }
-    function calcOccupants(value : number) {
-        setInputs({...inputs, occupants : value})
+    function calcOccupants(value: number) {
+        setInputs({...inputs, occupants: value})
     }
-    function calcWindows(value : number) {
-        setInputs({...inputs, window : value})
+    function calcWindows(value: number) {
+        setInputs({...inputs, window: value})
     }
 
     return (
@@ -52,9 +52,9 @@ export default function Main() {
                     <ThermometerSnowflake size={30} strokeWidth={1.5} />BTU Calculator
                 </h2>
                 {/* custom component for inputs */}
-                <Inputs Icon={Box} label="مساحة الغرفة (sq m)" min={10} max={2000} step={5} value={inputs.roomArea} calc = {calcRoomArea}/>
-                <Inputs Icon = {Users} label="عدد الاشخاص" min={0} max={100} value={inputs.occupants}calc = {calcOccupants}/>
-                <Inputs Icon={PanelsTopLeft} label="شبابيك" min={0} max={20}value={inputs.window} calc = {calcWindows}/>
+                <Inputs Icon={Box} label="مساحة الغرفة (sq m)" min={10} max={2000} step={5} value={inputs.roomArea} calc={calcRoomArea}/>
+                <Inputs Icon={Users} label="عدد الاشخاص" min={0} max={100} value={inputs.occupants} calc={calcOccupants}/>
+                <Inputs Icon={PanelsTopLeft} label="شبابيك" min={0} max={20} value={inputs.window} calc={calcWindows}/>
                 {/* Sun Exposure selection */}
                     <h3 className="py-2 flex item-center gap-1"><Sun strokeWidth={1.5} />SUN EXPOSURE • التعرض للشمس </h3>
                 <div className="flex mb-3 gap-2 bg-secondary rounded-full justify-between">

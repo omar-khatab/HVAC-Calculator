@@ -1,16 +1,16 @@
 import { LucideIcon } from "lucide-react"
 
 type Props = {
-    Icon : LucideIcon
-    label : string
-    value: number,
-    min : number
-    max : number
+    Icon: LucideIcon
+    label: string
+    value: number
+    min: number
+    max: number
     step?: number
-    calc: ( value : number) => void,
+    calc: (value: number) => void
 }
 
-export default function Inputs({ Icon, label , value, min, max, step, calc } : Props) {
+export default function Inputs({ Icon, label, value, min, max, step, calc }: Props) {
     
     return (
         <div className="py-2 flex-1">
