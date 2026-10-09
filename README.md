@@ -159,9 +159,9 @@ MIT License - see [LICENSE](./LICENSE) file.
 
 **Omar Khatab** — Engineering Software Developer | Frontend Developer
 
-- 🎓 Mechanical Power Engineering, Ain Shams University (2026)
+- 🎓 Mechanical Power Engineering, Ain Shams University (2024)
 - 🔧 Intern: National Authority for Tunnels — HVAC & Ventilation Systems
-- 🌐 Portfolio: https://e-commerce-three-coral-58.vercel.app
+- 🌐 Portfolio: https://portfolio-upgrade-wr9n.vercel.app/
 - 💼 LinkedIn: https://www.linkedin.com/in/omar-essam-319c/
 - 📧 omaressam0870@gmail.com
 - 🔗 Live: https://hvac-calculator-ebon.vercel.app/
