@@ -127,7 +127,7 @@ npm run dev
 - ✅ **Constraint validation** — ensures ducts fit architectural limits
 - ✅ **Transparent calculations** — show your work breakdown
 
-This is more than a simple `Area = CFM/V` calculator — you added real engineering constraints that MEP designers actually face.
+This is more than a simple `Area = CFM/V` calculator — added real engineering constraints that MEP designers actually face.
 
 ---
 
