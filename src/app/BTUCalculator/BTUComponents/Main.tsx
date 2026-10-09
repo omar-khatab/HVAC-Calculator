@@ -35,13 +35,13 @@ export default function Main() {
 
     // update fields
     function calcRoomArea(value: number) {
-        setInputs({...inputs, roomArea: value})
+        setInputs((prev) => ({ ...prev, roomArea: value }))
     }
     function calcOccupants(value: number) {
-        setInputs({...inputs, occupants: value})
+        setInputs((prev) => ({ ...prev, occupants: value }))
     }
     function calcWindows(value: number) {
-        setInputs({...inputs, window: value})
+        setInputs((prev) => ({ ...prev, window: value }))
     }
 
     return (
@@ -62,7 +62,7 @@ export default function Main() {
                     return <label key={val} className={`cursor-pointer rounded-full px-4 py-2 font-medium md:text-[12px] text-[10px] text-center
                                     ${inputs.sunExposure === val ? "bg-surface text-primary" : " text-surface"}`}>
                                 <input type="radio" name="sun" checked = {inputs.sunExposure === val}
-                                    onChange = {() => setInputs({...inputs, sunExposure : val})}
+                                    onChange = {() => setInputs((prev) => ({ ...prev, sunExposure: val }))}
                                     className="hidden"/>
                                 {val === 1 ? <span>No Sun x 1 <br/>بدون شمس</span> : val === 1.2 ? <span>Medium Sun x 1.2<br/> متوسط</span> : 
                                 <span>High Sun x 1.4<br/> عالى</span>}

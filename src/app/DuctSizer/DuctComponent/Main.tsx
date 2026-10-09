@@ -26,10 +26,10 @@ export default function Main() {
   const result : number = parseFloat((debouncedInputs.cfm / debouncedInputs.velocity).toFixed(2))
 
   function calcCFM(value: number) {
-    setInputs({...inputs, cfm: value})
+    setInputs((prev) => ({ ...prev, cfm: value }))
   }
   function calcVelocity(value: number) {
-    setInputs({...inputs, velocity: value})
+    setInputs((prev) => ({ ...prev, velocity: value }))
   }
 
   return (

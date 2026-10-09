@@ -33,11 +33,26 @@ export default function Inputs({ Icon, label, value, min, max, step, calc }: Pro
                     step={step}
                     value={value}
                     onChange={(e) => {
-                        calc(Math.min(Number(e.target.value),max))
+                        const rawValue = e.target.value
+                        if (rawValue === "") {
+                            // Allow empty string during typing, don't update state
+                            return
+                        }
+                        const num = Number(rawValue)
+                        if (!isNaN(num)) {
+                            calc(Math.min(num, max))
+                        }
                     }}
                     onBlur={(e) => {
-                        let num = Number(e.target.value)
-                        if(isNaN(num) || num < min) num = min
+                        const rawValue = e.target.value
+                        if (rawValue === "") {
+                            // If empty on blur, set to min value
+                            calc(min)
+                            return
+                        }
+                        let num = Number(rawValue)
+                        if (isNaN(num) || num < min) num = min
+                        else if (num > max) num = max
                         calc(num)
                     }}
                     className="bg-surface text-primary border w-[90] rounded-2xl outline-none px-2 py-1 focus:border-head transition"
