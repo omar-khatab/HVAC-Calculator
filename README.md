@@ -50,7 +50,7 @@ This project bridges mechanical engineering domain knowledge with modern web dev
 
 | Category | Stack |
 |----------|-------|
-| **Framework** | Next.js 14 (App Router, Server/Client Components) |
+| **Framework** | Next.js 16 (App Router, Server/Client Components) |
 | **Language** | TypeScript (Strict types for thermal & fluid parameters) |
 | **Styling** | Tailwind CSS (Responsive, utility-first) |
 | **Icons** | Lucide React |
