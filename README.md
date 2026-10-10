@@ -1,105 +1,85 @@
 # ❄ HVAC Duct & BTU Calculator
 
-A responsive, web-based engineering utility designed to streamline preliminary HVAC calculations. Built with **Next.js (App Router)** and **TypeScript**, this tool enables users to estimate cooling loads (BTU) for residential/commercial spaces and calculate optimal duct dimensions using real-world fluid dynamics and SMACNA standards.
+A responsive, web-based engineering utility designed to streamline preliminary HVAC calculations. Built with **Next.js (App Router)** and **TypeScript**, this tool enables users to estimate cooling loads (BTU) and calculate optimal duct dimensions using real-world fluid dynamics and SMACNA standards.
 
-[[Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-black?style=flat-square&logo=vercel)](https://hvac-calculator-ebon.vercel.app)
-[[Tech Stack](https://img.shields.io/badge/Stack-Next.js_14_|_TypeScript_|_Tailwind-blue?style=flat-square)](https://nextjs.org/)
+[[Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[[TypeScript](https://img.shields.io/badge/TypeScript-Strict-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[[Tailwind](https://img.shields.io/badge/Tailwind_CSS-3.x-06B6D4?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
 [[License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](./LICENSE)
-[[GitHub](https://img.shields.io/badge/Source_Code-GitHub-181717?style=flat-square&logo=github)](https://github.com/omar-khatab/HVAC-Calculator)
+[[Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-black?style=flat-square&logo=vercel)](https://hvac-calculator-ebon.vercel.app)
+
+**Live:** https://hvac-calculator-ebon.vercel.app/ | **Source:** https://github.com/omar-khatab/HVAC-Calculator
 
 ---
 
-## 💡 Overview & Origin
+## 💡 Overview
 
-This project bridges mechanical engineering domain knowledge with modern web development. Inspired by practical engineering training at the **National Authority for Tunnels (NAT)** — where analyzing subway station ventilation and HVAC infrastructure was key — this calculator digitizes manual formulas into an interactive, user-friendly digital interface.
+This project bridges mechanical engineering domain knowledge with modern web development. Inspired by practical training at the **National Authority for Tunnels (NAT)** — analyzing subway station ventilation and HVAC infrastructure — this calculator digitizes manual field formulas into an interactive digital interface.
 
-> **Built by Omar Khatab — Mechanical Power Engineer & Frontend Developer**  
+> **Built by Omar Khatab — Mechanical Power Engineer & Frontend Developer**
 > Ain Shams University (2026) | NAT Intern - HVAC & Ventilation Systems
-
----
 
 ## ✨ Key Features
 
 ### 🔥 BTU Cooling Load Estimator
-- Calculates required cooling capacity based on room area, ceiling height, occupant count, and heat-generating appliances
-- Provides recommended AC unit capacity in Tons/BTU/h/kW/TR
-- Applies safety factors and internal heat gains (lighting, occupants, appliances)
+- Calculates cooling capacity based on area, occupants, windows, and sun exposure
+- Auto-converts results to Ton / HP / kW
+- Smart recommendation system for residential & commercial spaces (Small office → Commercial)
 
 ### 📐 Duct Sizing Calculator
-- Computes required duct cross-sectional area using the **Continuity Equation** ($Q = V \times A$)
-- Converts airflow (CFM) and target air velocity (FPM) into recommended rectangular and round duct sizes aligned with SMACNA standards
-- Supports aspect ratio (W:H) constraints for false ceiling limits
-- Validates rectangular dimensions and auto-adjusts to meet architectural constraints
+- Computes duct area using **Continuity Equation** `A = Q / V`
+- Suggests 4 optimal rectangular sizes sorted by aspect ratio (closest to square = best)
+- Calculates equivalent round diameter
+- Velocity-based status: Low (quiet) / Medium (balanced) / High (noisy)
 
-### 🔄 Multi-Unit Engineering Converter
-- Real-time conversion: BTU/h ↔ kW ↔ TR, CFM ↔ m³/h ↔ L/s, in.wg/100ft ↔ Pa/m, FPM ↔ m/s, °F ↔ °C, ft² ↔ m²
-- No page reload - instant as you type
+### 🔍 Transparent Calculations
+- Shows full formula breakdown with live values (Show Your Work)
+- No black-box results - every number is traceable
 
-### 🔍 Transparent "Show Your Work" Breakdown
-- Displays step-by-step formula execution and variable inputs so engineers can verify logic
-- Velocity verification and required area outputs
-
-### 💻 Developer-Centric UX
-- Reusable, fully-typed input components (sliders + numerical validation)
-- Fast, server-rendered multi-page layout with zero heavy UI libraries
-- Dark/light industrial clean engineering UI
-
----
-
-## 🛠 Tech Stack & Architecture
+## 🛠 Tech Stack
 
 | Category | Stack |
 |----------|-------|
-| **Framework** | Next.js 16 (App Router, Server/Client Components) |
-| **Language** | TypeScript (Strict types for thermal & fluid parameters) |
-| **Styling** | Tailwind CSS (Responsive, utility-first) |
-| **Icons** | Lucide React |
-| **Deployment** | Vercel (CI/CD) |
-| **License** | MIT |
-
----
+| Framework | Next.js 16 App Router |
+| Language | TypeScript (strict) |
+| Styling | Tailwind CSS |
+| Icons | Lucide React |
+| Logic | Separated pure functions in `/libs/formulas.ts` |
+| Deployment | Vercel |
 
 ## 📐 Formulas Used
 
-### 1. BTU Cooling Load (Simplified Field Method)
+### 1. BTU (Field Method)
 ```
 Base BTU = Area (sq m) × 430
-Total BTU = Base BTU + (Occupants × 600) + (Appliances × 1000)
+Window Load = Windows × 1000
+Subtotal = (Base + Window Load) × SunFactor (1 / 1.2 / 1.4)
+Occupant Load = People × 600
+Total BTU = Subtotal + Occupant Load
+1 Ton = 12000 BTU/h
 ```
 
 ### 2. Duct Sizing - Continuity Equation
 ```
-A = Q / V
-Where A = Area (ft²), Q = Airflow Rate (CFM), V = Velocity (FPM)
+Area(ft²) = CFM / Velocity(FPM)
+Diameter(in) = 2 × sqrt((Area × 144) / π)
 ```
 
-### 3. Rectangular Duct with Aspect Ratio
-```
-Given required Area and max Aspect Ratio (W/H)
-Solve: W × H = Area, with W/H ≤ maxRatio
-Algorithm selects optimal W, H that fits ceiling
-```
+### 3. Rectangular Selection Algorithm
+1. Iterate through standard widths (6" to 48")
+2. Calculate height = RequiredArea / Width
+3. Round height to nearest even number (manufacturing standard)
+4. Filter: height 6-48, error < 10%, aspect ratio ≤ 4:1
+5. Deduplicate (12x16 same as 16x12)
+6. Sort by aspect ratio (closest to square first) and return top 4
 
-### 4. Circular Equivalent
-```
-Diameter = sqrt((4 × Area) / π)
-```
-
-### 5. Airflow from Sensible Load
-```
-CFM = Q_sensible / (1.08 × ΔT)
-Where ΔT = T_room - T_supply
-```
-
-### 6. Unit Conversions
+### 4. Unit Conversions
 ```
 1 TR = 12000 BTU/h = 3.517 kW
-1 CFM = 1.699 m³/h = 0.4719 L/s
+1 ft² = 144 in² = 929.03 cm² = 0.0929 m²
 ```
 
----
-
-## 🚀 Getting Started Locally
+## 🚀 Getting Started
 
 ```bash
 # 1. Clone the repository
@@ -117,33 +97,23 @@ npm run dev
 # 5. Open http://localhost:3000
 ```
 
----
+## 🧠 Engineering Decisions
 
-## 🌟 What Makes This Different
+- **Separation of Concerns:** Business logic isolated in `libs/formulas.ts` for testability and reusability
+- **Generic State Handler:** `update(field, value)` pattern prevents code duplication
+- **SMACNA-aligned:** Uses only industry-standard duct sizes
+- **Safety:** Zero-division guards and range validation on all inputs
 
-- ✅ **Multi-Unit Converter** — real-time BTU/h ↔ kW ↔ TR, CFM ↔ m³/h, etc.
-- ✅ **Aspect Ratio Constraints** — W:H restrictions for false ceiling limits
-- ✅ **SMACNA-based sizing** — suggested sizes per standards
-- ✅ **Constraint validation** — ensures ducts fit architectural limits
-- ✅ **Transparent calculations** — show your work breakdown
-
-This is more than a simple `Area = CFM/V` calculator — added real engineering constraints that MEP designers actually face.
-
----
-
-## 🗺️ Roadmap
+## 🗺 Roadmap
 
 - [x] BTU / Cooling Load calculator
-- [x] Duct Sizer with algorithm selection
-- [x] Aspect Ratio (W:H) constraints
-- [x] Multi-Unit Converter
-- [x] Input validation & TypeScript
+- [x] Duct Sizer with smart algorithm
+- [x] Transparent formula breakdown
+- [x] Input validation & TypeScript strict mode
 - [x] Live on Vercel
 - [ ] Psychrometric chart
 - [ ] U-Value calculator
 - [ ] PDF export for reports
-
----
 
 ## 📄 License
 
@@ -159,9 +129,9 @@ MIT License - see [LICENSE](./LICENSE) file.
 
 **Omar Khatab** — Engineering Software Developer | Frontend Developer
 
-- 🎓 Mechanical Power Engineering, Ain Shams University (2024)
+- 🎓 Mechanical Power Engineering, Ain Shams University (2026)
 - 🔧 Intern: National Authority for Tunnels — HVAC & Ventilation Systems
 - 🌐 Portfolio: https://portfolio-upgrade-wr9n.vercel.app/
 - 💼 LinkedIn: https://www.linkedin.com/in/omar-essam-319c/
 - 📧 omaressam0870@gmail.com
-- 🔗 Live: https://hvac-calculator-ebon.vercel.app/
+- 🔗 Live Demo: https://hvac-calculator-ebon.vercel.app/
