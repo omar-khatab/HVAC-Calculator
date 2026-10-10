@@ -1,58 +1,55 @@
 "use client"
-
-import { DuctSizerInputs } from "@/app/Types/hvac";
-import { useState, useEffect } from "react";
-import Recommendations from "./Recommendations";
-import Outputs from "./Outputs";
-import Inputs from "@/app/components/Inputs";
-import { CircleGauge, Sigma, SquareChartGantt, Wind } from "lucide-react";
+import { DuctSizerInputs } from "@/app/libs/types"
+import { useState } from "react"
+import Recommendations from "./Recommendations"
+import Outputs from "./Outputs"
+import Inputs from "@/app/components/Inputs"
+import { CircleGauge, Sigma, SquareChartGantt, Wind } from "lucide-react"
+import { calcDuctArea } from "@/app/libs/formulas"
 
 export default function Main() {
+  // HVAC duct sizing inputs state
   const [inputs, setInputs] = useState<DuctSizerInputs>({
-    cfm: 100,
-    velocity: 100,
+    cfm: 400, // Airflow in Cubic Feet per Minute
+    velocity: 900, // Air velocity in Feet Per Minute
   })
 
-  // Debounce: Delay calculations until user stops typing
-  const [debouncedInputs, setDebouncedInputs] = useState(inputs)
+  // Calculate duct area using separated business logic
+  const { ft2, in2, cm2 } = calcDuctArea(inputs)
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedInputs(inputs)
-    }, 200) // Wait 200ms after last change
-    return () => clearTimeout(timer)
-  }, [inputs])
-
-  const result : number = parseFloat((debouncedInputs.cfm / debouncedInputs.velocity).toFixed(2))
-
-  function calcCFM(value: number) {
-    setInputs((prev) => ({ ...prev, cfm: value }))
-  }
-  function calcVelocity(value: number) {
-    setInputs((prev) => ({ ...prev, velocity: value }))
-  }
+  // Generic updater for any input field
+  const update = (field: keyof DuctSizerInputs, value: number) =>
+    setInputs(p => ({...p, [field]: value }))
 
   return (
-    <div className="grid lg:grid-cols-3 lg:grid-rows-3 w-full max-w-7xl mx-auto px-4 gap-4 grid-cols-1 row-span-1 pb-[40] pt-[80]">
-      <div className=" bg-primary text-surface p-5 rounded-2xl lg:row-span-3">
-        <div>
-          <h2 className="text-xl font-extrabold mb-2 text-head flex item-center gap-2">
-            <SquareChartGantt size={30} strokeWidth={1.5} />
-            Duct Sizer</h2>
-          {/* custom component for inputs */}
-          <Inputs Icon={Wind} label="AIRFLOW • معدل التدفق (CFM)" value={inputs.cfm} min={0} max={10000} step={50} calc={calcCFM}/>
-          <Inputs Icon={CircleGauge} label="السرعة (fpm)" value={inputs.velocity} min={100} max={3000} step={50} calc={calcVelocity}/>
-        </div>
-        {/* UI for Formula */}
-        <div className="bg-primary text-surface rounded-2xl p-4 border-border border-2 mt-10 flex gap-4 flex-col">
-          <h3 className="text-head text-xl font-bold flex item-center gap-1"><Sigma/>FORMULA • المعادلة</h3>
+    <div className="grid lg:grid-cols-3 w-full max-w-7xl mx-auto px-4 gap-4 pb-10 pt-20">
+      {/* Input Panel */}
+      <div className="bg-primary text-surface p-6 rounded-2xl lg:row-span-2">
+        <h2 className="text-xl font-extrabold mb-4 text-head flex items-center gap-2">
+          <SquareChartGantt size={30} strokeWidth={1.5} />
+          Duct Sizer
+        </h2>
+
+        {/* Airflow input */}
+        <Inputs Icon={Wind} label="AIRFLOW (CFM)" value={inputs.cfm} min={100} max={10000} step={50} calc={v => update("cfm", v)}/>
+
+        {/* Velocity input */}
+        <Inputs Icon={CircleGauge} label="Velocity (FPM)" value={inputs.velocity} min={300} max={3000} step={50} calc={v => update("velocity", v)}/>
+
+        {/* Formula display */}
+        <div className="bg-black/20 rounded-2xl p-4 mt-6 flex flex-col gap-2 font-mono text-sm">
+          <h3 className="font-bold flex items-center gap-1 font-sans text-base"><Sigma/>FORMULA</h3>
           <p>Area = CFM / Velocity</p>
-          <p>{debouncedInputs.cfm} / {debouncedInputs.velocity} = {result} ft<sup>2</sup></p>
-          <p>{(result * 144).toFixed(1)} in<sup>2</sup> • {(result * 929.0304).toFixed(0)} cm<sup>2</sup></p>
+          <p>{inputs.cfm} / {inputs.velocity} = {ft2.toFixed(2)} ft²</p>
+          <h3 className="font-bold mt-2 border-t border-white/20 pt-2 font-sans">
+            {in2.toFixed(1)} in² • {cm2.toFixed(0)} cm²
+          </h3>
         </div>
       </div>
-        <Outputs result ={result} inputs = {inputs}/>
-        <Recommendations result ={result}/>
+
+      {/* Results and recommendations */}
+      <Outputs result={ft2} inputs={inputs}/>
+      <Recommendations result={ft2}/>
     </div>
   )
 }

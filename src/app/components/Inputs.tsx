@@ -34,10 +34,6 @@ export default function Inputs({ Icon, label, value, min, max, step, calc }: Pro
                     value={value}
                     onChange={(e) => {
                         const rawValue = e.target.value
-                        if (rawValue === "") {
-                            // Allow empty string during typing, don't update state
-                            return
-                        }
                         const num = Number(rawValue)
                         if (!isNaN(num)) {
                             calc(Math.min(num, max))
@@ -45,11 +41,6 @@ export default function Inputs({ Icon, label, value, min, max, step, calc }: Pro
                     }}
                     onBlur={(e) => {
                         const rawValue = e.target.value
-                        if (rawValue === "") {
-                            // If empty on blur, set to min value
-                            calc(min)
-                            return
-                        }
                         let num = Number(rawValue)
                         if (isNaN(num) || num < min) num = min
                         else if (num > max) num = max
