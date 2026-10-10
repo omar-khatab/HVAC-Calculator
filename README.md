@@ -17,7 +17,7 @@ A responsive, web-based engineering utility designed to streamline preliminary H
 This project bridges mechanical engineering domain knowledge with modern web development. Inspired by practical training at the **National Authority for Tunnels (NAT)** — analyzing subway station ventilation and HVAC infrastructure — this calculator digitizes manual field formulas into an interactive digital interface.
 
 > **Built by Omar Khatab — Mechanical Power Engineer & Frontend Developer**
-> Ain Shams University (2026) | NAT Intern - HVAC & Ventilation Systems
+> Ain Shams University (2024) | NAT Intern - HVAC & Ventilation Systems
 
 ## ✨ Key Features
 
