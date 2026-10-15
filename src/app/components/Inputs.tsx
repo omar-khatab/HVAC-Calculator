@@ -35,9 +35,8 @@ export default function Inputs({ Icon, label, value, min, max, step, calc }: Pro
                     onChange={(e) => {
                         const rawValue = e.target.value
                         const num = Number(rawValue)
-                        if (!isNaN(num)) {
-                            calc(Math.min(num, max))
-                        }
+                        console.log(rawValue)
+                        calc(Math.min(num, max))
                     }}
                     onBlur={(e) => {
                         const rawValue = e.target.value

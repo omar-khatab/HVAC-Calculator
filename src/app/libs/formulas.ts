@@ -9,9 +9,9 @@ export function calcBTU(inputs: BTUInputs) {
   const base = inputs.roomArea * 430
   
   // Additional load from windows (1000 BTU per window)
-  const windows = inputs.window * 1000
+  const windows = inputs.windows * 1000
   
-  // Apply sun exposure multiplier (1 = no sun, 1.4 = high sun)
+  // Apply sun exposure multiplier (1 = no sun, 1.2 = medium sun, 1.4 = high sun)
   const sub = (base + windows) * inputs.sunExposure
   
   // Human heat load (600 BTU per person)

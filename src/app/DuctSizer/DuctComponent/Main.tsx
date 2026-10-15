@@ -34,7 +34,7 @@ export default function Main() {
         <Inputs Icon={Wind} label="AIRFLOW (CFM)" value={inputs.cfm} min={100} max={10000} step={50} calc={v => update("cfm", v)}/>
 
         {/* Velocity input */}
-        <Inputs Icon={CircleGauge} label="Velocity (FPM)" value={inputs.velocity} min={300} max={3000} step={50} calc={v => update("velocity", v)}/>
+        <Inputs Icon={CircleGauge} label="Velocity (FPM)" value={inputs.velocity} min={100} max={3000} step={50} calc={v => update("velocity", v)}/>
 
         {/* Formula display */}
         <div className="bg-black/20 rounded-2xl p-4 mt-6 flex flex-col gap-2 font-mono text-sm">
@@ -42,7 +42,7 @@ export default function Main() {
           <p>Area = CFM / Velocity</p>
           <p>{inputs.cfm} / {inputs.velocity} = {ft2.toFixed(2)} ft²</p>
           <h3 className="font-bold mt-2 border-t border-white/20 pt-2 font-sans">
-            {in2.toFixed(1)} in² • {cm2.toFixed(0)} cm²
+            {in2.toFixed(1)} in² • {cm2.toFixed(2)} cm²
           </h3>
         </div>
       </div>

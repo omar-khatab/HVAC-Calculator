@@ -8,7 +8,7 @@ export interface DuctSizerInputs {
 export interface BTUInputs {
     roomArea: number;        // Room area (sq ft)
     occupants: number;       // Number of people
-    window: number;          // Number of windows
+    windows: number;          // Number of windows
     sunExposure: number;     // Sun exposure
 }
 

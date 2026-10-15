@@ -14,7 +14,7 @@ export default function Main() {
     const [inputs, setInputs] = useState<BTUInputs>({
         roomArea: 10, // Room area in square meters
         occupants: 1, // Number of people in the room
-        window: 1, // Number of windows
+        windows: 1, // Number of windows
         sunExposure: 1, // Sun exposure factor (1, 1.2, 1.4)
     })
 
@@ -38,7 +38,7 @@ export default function Main() {
                 {/* Reusable input components */}
                 <Inputs Icon={Box} label=" room area (sq m)" min={10} max={200} step={5} value={inputs.roomArea} calc={(value) => update('roomArea', value)}/>
                 <Inputs Icon={Users} label="people" min={0} max={100} value={inputs.occupants} calc={(value) => update('occupants', value)}/>
-                <Inputs Icon={PanelsTopLeft} label="windows" min={0} max={20} value={inputs.window} calc={(value) => update('window', value)}/>
+                <Inputs Icon={PanelsTopLeft} label="windows" min={0} max={20} value={inputs.windows} calc={(value) => update('windows', value)}/>
 
                 {/* Sun exposure selector */}
                 <h3 className="py-2 flex items-center gap-1"><Sun strokeWidth={1.5} />SUN EXPOSURE </h3>
@@ -60,7 +60,7 @@ export default function Main() {
                         <h3 className="text-head text-xl font-bold mb-1 flex items-center gap-1"><Sigma strokeWidth={1.5} />FORMULA</h3>
                     <p> Base = Area x 430</p>
                     <p> {inputs.roomArea } x 430 = <span>{base.toLocaleString()}</span></p>
-                    <p>+ windows : {inputs.window} x 1,000 = <span>{windows.toLocaleString()}</span></p>
+                    <p>+ windows : {inputs.windows} x 1,000 = <span>{windows.toLocaleString()}</span></p>
                     <p>sub = (Base + Windows) x <span>{inputs.sunExposure}</span> (sun)</p>
                     <p>sub = {(base + windows).toLocaleString()} x <span>{inputs.sunExposure}</span> = {sub.toLocaleString()}</p>
                     <p>+ People : {inputs.occupants} x 600 = <span>{people.toLocaleString()}</span></p>

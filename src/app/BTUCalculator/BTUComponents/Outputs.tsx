@@ -12,7 +12,7 @@ export default function Outputs({result, inputs}: Props) {
         {id: 1, title: "Area", value: inputs.roomArea},
         {id: 2, title: "Base load", value: inputs.roomArea * 430},
         {id: 3, title: "People", value: inputs.occupants},
-        {id: 4, title: "Windows", value: inputs.window},
+        {id: 4, title: "Windows", value: inputs.windows},
         {id: 5, title: "Sun Exposure", value: inputs.sunExposure},
     ]
 
