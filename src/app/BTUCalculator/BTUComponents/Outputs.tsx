@@ -7,6 +7,9 @@ type Props = {
 }
 
 export default function Outputs({result, inputs}: Props) {
+    // Guard against invalid inputs
+    const isValidResult = Number.isFinite(result) && result >= 0
+
     // Summary data for room specifications display
     const roomSpace: {id: number, title: string, value: number}[] = [
         {id: 1, title: "Area", value: inputs.roomArea},
@@ -29,13 +32,13 @@ return (
             <div className="flex gap-3 flex-col w-full">
                 <div>
                     <h3 className="text-xl">TOTAL BTU REQUIRED</h3>
-                    <h3 className="text-5xl text-head my-3">{result.toLocaleString()}</h3>
+                    <h3 className="text-5xl text-head my-3">{isValidResult ? result.toLocaleString() : "0"}</h3>
                     <p>BTU / hour</p>
                 </div>
 
                 {/* Horsepower conversion */}
                 <div className="justify-center text-2xl font-bold flex gap-2 p-2 bg-secondary rounded-2xl md:w-fit">
-                    <span>{(result / 8000).toFixed(2)}</span>
+                    <span>{isValidResult ? (result / 8000).toFixed(2) : "0"}</span>
                     <span>hp</span>
                 </div>
 
@@ -43,11 +46,11 @@ return (
                 <div className="flex gap-3 flex-col md:flex-row text-center">
                     <div className="flex items-center gap-1 bg-secondary rounded-2xl px-3 py-2">
                         <ArrowUpToLine strokeWidth={1.5} />
-                        <p>{(result / 12000).toFixed(2)} Ton</p>
+                        <p>{isValidResult ? (result / 12000).toFixed(2) : "0"} Ton</p>
                     </div>
                     <div className="bg-secondary rounded-2xl px-3 py-2 flex items-center gap-1">
                         <Zap strokeWidth={1.5} />
-                        <p>{`${(result / 3412).toFixed(2)} kw ${(result / 3.412).toFixed(0)} w`}</p>
+                        <p>{`${isValidResult ? (result / 3412).toFixed(2) : "0"} kw ${isValidResult ? (result / 3.412).toFixed(0) : "0"} w`}</p>
                     </div>
                 </div>
             </div>

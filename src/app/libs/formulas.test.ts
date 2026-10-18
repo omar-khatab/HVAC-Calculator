@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { calcBTU, calcDuctArea } from "./formulas";
+import { calcBTU, calcDuctArea, getSuggestions } from "./formulas";
 
 
 // BTU calculator tests
