@@ -38,8 +38,7 @@ return (
 
                 {/* Horsepower conversion */}
                 <div className="justify-center text-2xl font-bold flex gap-2 p-2 bg-secondary rounded-2xl md:w-fit">
-                    <span>{isValidResult ? (result / 8000).toFixed(2) : "0"}</span>
-                    <span>hp</span>
+                    <span>{isValidResult ? (result / 8000).toFixed(2) : "0"} hp</span>
                 </div>
 
                 {/* Ton and kW conversions */}

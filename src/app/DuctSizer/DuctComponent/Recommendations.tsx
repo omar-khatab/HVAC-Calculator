@@ -1,5 +1,5 @@
 import { Cuboid } from "lucide-react";
-import {getSuggestions} from "@/app/libs/formulas"
+import {getSuggestions} from "@/app/libs/ductSuggestions"
 
 type Props = {
   result: number // Result from duct area calculation in ft²

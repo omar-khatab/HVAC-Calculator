@@ -7,63 +7,35 @@ function renderOutputs(result: number, inputs: BTUInputs) {
 }
 
 describe("Outputs: calculated values", () => {
-  it("shows all outputs with all units", () => {
-    renderOutputs(12720, {
-      roomArea: 20,
-      occupants: 2,
-      windows: 1,
-      sunExposure: 1.2
-    })
+  const inputs: BTUInputs = { roomArea: 20, occupants: 2, windows: 1, sunExposure: 1.2 }
+  it("shows BTU value", () => {
+    renderOutputs(12720, inputs)
     expect(screen.getByText("12,720")).toBeInTheDocument()
     expect(screen.getByText("TOTAL BTU REQUIRED")).toBeInTheDocument()
   })
 
   it("shows horsepower conversion", () => {
-    renderOutputs(12720, {
-      roomArea: 20,
-      occupants: 2,
-      windows: 1,
-      sunExposure: 1.2
-    })
-    expect(screen.getByText(/1\.59/)).toBeInTheDocument()
-    expect(screen.getByText(/hp/)).toBeInTheDocument()
+    renderOutputs(12720, inputs)
+    expect(screen.getByText(/1\.59\s*hp/i)).toBeInTheDocument()
   })
 
   it("shows ton conversion", () => {
-    renderOutputs(12720, {
-      roomArea: 20,
-      occupants: 2,
-      windows: 1,
-      sunExposure: 1.2
-    })
-    expect(screen.getByText(/1\.06/)).toBeInTheDocument()
-    expect(screen.getByText(/Ton/)).toBeInTheDocument()
+    renderOutputs(12720, inputs)
+    expect(screen.getByText(/1\.06\s*Ton/i)).toBeInTheDocument()
   })
 
   it("shows kW and W conversion", () => {
-    renderOutputs(12720, {
-      roomArea: 20,
-      occupants: 2,
-      windows: 1,
-      sunExposure: 1.2
-    })
-    expect(screen.getByText(/3\.73/)).toBeInTheDocument()
-    expect(screen.getByText(/3728/)).toBeInTheDocument()
+    renderOutputs(12720, inputs)
+    expect(screen.getByText(/3\.73\s*kw\s3728\s*w/i)).toBeInTheDocument()
   })
 
   it("shows room space details", () => {
-    renderOutputs(12720, {
-      roomArea: 20,
-      occupants: 2,
-      windows: 1,
-      sunExposure: 1.2
-    })
-    expect(screen.getByText("ROOM SPACE")).toBeInTheDocument()
-    expect(screen.getByText("Area")).toBeInTheDocument()
-    expect(screen.getByText("Base load")).toBeInTheDocument()
-    expect(screen.getByText("People")).toBeInTheDocument()
-    expect(screen.getByText("Windows")).toBeInTheDocument()
-    expect(screen.getByText("Sun Exposure")).toBeInTheDocument()
+    renderOutputs(12720, inputs)
+    const row = (label: string) => screen.getByText(label).parentElement!
+    expect(row("Area")).toHaveTextContent("20")
+    expect(row("People")).toHaveTextContent("2")
+    expect(row("Windows")).toHaveTextContent("1")
+    expect(row("Sun Exposure")).toHaveTextContent("1.2")
   })
 })
 

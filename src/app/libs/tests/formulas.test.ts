@@ -1,6 +1,4 @@
-import { describe, test, expect } from "vitest";
-import { calcBTU, calcDuctArea, getSuggestions } from "./formulas";
-
+import { calcBTU, calcDuctArea} from "../formulas";
 
 // BTU calculator tests
 describe("calcBTU", () => {
@@ -82,3 +80,4 @@ describe("calcDuctArea", () => {
         expect(r2.ft2).toBe(r1.ft2 * 2)
     })
 })
+
