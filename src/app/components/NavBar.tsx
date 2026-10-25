@@ -50,7 +50,7 @@ export default function NavBar() {
                     ))}
                 </div>
                 {/* Desktop btn */}
-                <button className="hidden bg-accent text-head rounded-full px-5 py-2 text-sm font-bold hover:bg-accentHover transition-colors 
+                <button data-testid="get-pro" className="hidden bg-accent text-head rounded-full px-5 py-2 text-sm font-bold hover:bg-accentHover transition-colors 
                         cursor-pointer md:flex item-center gap-1"
                         onClick={() => setShowPro(true)}>
                         <Gem size={20} strokeWidth={1.5} />
@@ -58,6 +58,7 @@ export default function NavBar() {
                 </button>
                 {/* Mobile Burger(icon) */}
                 <button 
+                    data-testid="mobile-burger"
                     onClick={() => setOpen(!open)}
                     className="md:hidden w-9 h-9 rounded-full bg-surface/50 flex items-center justify-center cursor-pointer">
                     <span className="text-[18px]">{open ? <X size={20} strokeWidth={1.5} /> : <Menu size={20} strokeWidth={1.5} />}</span>
@@ -81,7 +82,7 @@ export default function NavBar() {
                             {l.title}
                         </Link>
                     ))}
-                    <button className="mt-2 bg-accent text-head rounded-xl py-3 text-sm font-bold hover:bg-accentHover transition-colors 
+                    <button data-testid="get-pro" className="mt-2 bg-accent text-head rounded-xl py-3 text-sm font-bold hover:bg-accentHover transition-colors 
                             cursor-pointer flex items-center gap-1 justify-center"
                     onClick={() => {
                         setShowPro(true)

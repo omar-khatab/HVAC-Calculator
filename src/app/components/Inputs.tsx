@@ -1,4 +1,5 @@
 import { LucideIcon } from "lucide-react"
+import { useId } from "react"
 
 type Props = {
     Icon: LucideIcon
@@ -11,19 +12,21 @@ type Props = {
 }
 
 export default function Inputs({ Icon, label, value, min, max, step, calc }: Props) {
-    
+    const id = useId()
+    const labelId = `${id}-label`
     return (
-        <div className="py-2 flex-1">
-            <label className="mb-1.5 flex justify-between text-surface">
-                <span className="flex item-center gap-1"><Icon className="w-4 h-6"/>{label}</span>
-                <span>{value}</span>
-            </label>
+        <div className="py-2 flex-1" role="group" aria-labelledby={labelId}>
+            <div className="mb-1.5 flex justify-between">
+    <span id={labelId} className="flex item-center gap-1"><Icon className="w-4 h-6"/>{label}</span>
+    <span>{value}</span>
+  </div>
             <div className="flex flex-wrap gap-3">
                 <input type="range" 
                     min={min}
                     max={max}
                     step={step}
                     value={value}
+                    aria-labelledby={labelId}
                     onChange={(e) => calc(Number(e.target.value))}
                     className="accent-secondary flex-1"
                     />
@@ -32,10 +35,10 @@ export default function Inputs({ Icon, label, value, min, max, step, calc }: Pro
                     max={max}
                     step={step}
                     value={value}
+                    aria-labelledby={labelId}
                     onChange={(e) => {
                         const rawValue = e.target.value
                         const num = Number(rawValue)
-                        console.log(rawValue)
                         calc(Math.min(num, max))
                     }}
                     onBlur={(e) => {

@@ -1,4 +1,4 @@
-import { calcBTU, calcDuctArea} from "../formulas";
+import { calcBTU, calcDuctArea} from "./formulas";
 
 // BTU calculator tests
 describe("calcBTU", () => {

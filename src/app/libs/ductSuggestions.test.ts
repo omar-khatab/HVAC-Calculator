@@ -1,4 +1,4 @@
-import { getSuggestions } from "../ductSuggestions";
+import { getSuggestions } from "./ductSuggestions";
 
 const toIn2 = (ft2: number) => ft2 * 144;
 const aspectRatio = (s: {width: number, height: number}) => {

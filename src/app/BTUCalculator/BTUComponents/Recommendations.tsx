@@ -48,7 +48,7 @@ export default function Recommendations({result}: Props) {
                     <Snowflake strokeWidth={1.5} className="h-7 w-7 text-primary rounded-full bg-amber-200"/>
                     <span className="text-xl font-bold">Recommended</span> : {recommendationCard.map((r) => {
                         // Show only the matching recommendation
-                        return r.status? <span key={r.id} className="text-xl font-bold">{r.space}</span> : ""
+                        return r.status? <span key={r.id} data-testid="recommended-space" className="text-xl font-bold">{r.space}</span> : ""
                     })}
                 </div>
                 <p>Calculated {result.toLocaleString()} BTU → {(result / 12000).toFixed(2)} Tons. For best efficiency, round up to next available unit size.

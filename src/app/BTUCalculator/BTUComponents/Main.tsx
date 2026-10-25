@@ -56,8 +56,8 @@ export default function Main() {
                 </div>
 
                 {/* Formula breakdown display */}
-                <div className="bg-black/20 text-surface rounded-2xl p-4 flex flex-col gap-1.5">
-                        <h3 className="text-head text-xl font-bold mb-1 flex items-center gap-1"><Sigma strokeWidth={1.5} />FORMULA</h3>
+                <div data-testid="formula-panel" className="bg-black/20 text-surface rounded-2xl p-4 flex flex-col gap-1.5">
+                    <h3 className="text-head text-xl font-bold mb-1 flex items-center gap-1"><Sigma strokeWidth={1.5} />FORMULA</h3>
                     <p> Base = Area x 430</p>
                     <p> {inputs.roomArea } x 430 = <span>{base.toLocaleString()}</span></p>
                     <p>+ windows : {inputs.windows} x 1,000 = <span>{windows.toLocaleString()}</span></p>
