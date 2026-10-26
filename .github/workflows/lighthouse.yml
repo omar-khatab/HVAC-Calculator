@@ -1,5 +1,15 @@
 name: Lighthouse CI
-on: [push]
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gh-pages-deploy
+  cancel-in-progress: false
 
 jobs:
   lhci:
@@ -9,12 +19,34 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
 
       - name: Install deps
-        run: npm install --legacy-peer-deps
+        run: npm Install --legacy-peer-deps
 
       - name: Build
         run: npm run build
 
       - name: Run LHCI
-        run: npx @lhci/cli@0.15.x autorun --collect.url=http://localhost:3000 --collect.startServerCommand="npm run start" --collect.numberOfRuns=1 --upload.target=temporary-public-storage
+        run: >
+          npx @lhci/cli@0.15.x autorun
+          --collect.url=http://localhost:3000
+          --collect.startServerCommand="npm run start"
+          --collect.startServerReadyPattern="Ready|started|localhost"
+          --collect.numberOfRuns=1
+          --upload.target=filesystem
+          --upload.outputDir=./lhci-reports
+
+      - name: Prepare report
+        if: ${{ !cancelled() }}
+        run: |
+          mkdir -p out
+          cp "$(ls lhci-reports/*.report.html | head -n 1)" out/index.html
+
+      - uses: peaceiris/actions-gh-pages@v4
+        if: ${{ !cancelled() }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          destination_dir: lighthouse
+          keep_files: true
