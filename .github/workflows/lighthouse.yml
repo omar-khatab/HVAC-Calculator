@@ -22,7 +22,7 @@ jobs:
           cache: npm
 
       - name: Install deps
-        run: npm Install --legacy-peer-deps
+        run: npm install --legacy-peer-deps
 
       - name: Build
         run: npm run build
@@ -44,7 +44,7 @@ jobs:
           cp "$(ls lhci-reports/*.report.html | head -n 1)" out/index.html
 
       - uses: peaceiris/actions-gh-pages@v4
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && github.ref == 'refs/heads/master' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
