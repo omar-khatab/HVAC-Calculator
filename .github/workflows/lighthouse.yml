@@ -1,5 +1,6 @@
 name: Lighthouse CI
 on: [push]
+
 jobs:
   lhci:
     runs-on: ubuntu-latest
@@ -8,6 +9,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci --legacy-peer-deps
-      - run: npm run build
-      - run: npm run lighthouse:ci
+
+      - name: Install deps
+        run: npm install --legacy-peer-deps
+
+      - name: Build
+        run: npm run build
+
+      - name: Run LHCI
+        run: npx @lhci/cli@0.15.x autorun --collect.url=http://localhost:3000 --collect.startServerCommand="npm run start" --collect.numberOfRuns=1 --upload.target=temporary-public-storage
