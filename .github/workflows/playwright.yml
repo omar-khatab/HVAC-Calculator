@@ -1,9 +1,9 @@
 name: Playwright Tests
 on:
   push:
-    branches: [ master, reports-action]
+    branches: [master, reports-action]
   pull_request:
-    branches: [ master]
+    branches: [master]
   workflow_dispatch:
 
 permissions:
@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   test:
-    timeout-minutes: 60
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -42,17 +42,25 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+
       - name: Debug report folder
         if: ${{ !cancelled() }}
         run: |
           ls -R playwright-report | head -50
           find . -name "*.html" -not -path "./node_modules/*" -not -path "./.next/*" | head -20
+
       - name: Prepare report
         if: ${{ !cancelled() && github.event_name != 'pull_request' }}
         run: |
           mkdir -p out
           cp -r playwright-report/. out/
-          cp out/report.html out/index.html
+          if [ -f out/report.html ]; then
+            cp out/report.html out/index.html
+          elif [ ! -f out/index.html ]; then
+            echo "No HTML report found"
+            ls -R out
+            exit 1
+          fi
 
       - uses: peaceiris/actions-gh-pages@v4
         if: ${{ !cancelled() && github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
