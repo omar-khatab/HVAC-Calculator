@@ -61,6 +61,10 @@ Business logic lives in `src/libs/` and is isolated for testability. Overall cov
 | `libs/formulas.ts` | **100** | **100** | **100** | **100** |
 | `BTUCalculator/BTUComponents/Outputs.tsx` | **100** | **100** | **100** | **100** |
 | `Ductsizer/DuctComponent/Outputs.tsx` | **100** | **100** | **100** | **100** |
+| `BTUCalculator/BTUComponents/Main.tsx` | 0 | 0 | 0 | 0 |
+| `Ductsizer/DuctComponent/Main.tsx` | 0 | 0 | 0 | 0 |
+| `components/Inputs.tsx` | 0 | 0 | 0 | 0 |
+| `components/ProModel.tsx` | 0 | 0 | 0 | 0 |
 
 #### 1. `src/libs/formulas.ts`
 Pure BTU and duct physics:
