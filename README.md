@@ -3,6 +3,9 @@
 A responsive, web-based engineering utility for preliminary HVAC calculations. Built with **Next.js 15 (App Router)** and **TypeScript Strict**, it estimates cooling loads (BTU) and calculates optimal duct dimensions using the Continuity Equation and SMACNA standards.
 
 **Live Demo:** https://hvac-calculator-ebon.vercel.app/
+---
+
+[![Playwright Tests](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/playwright.yml/badge.svg)](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/playwright.yml)
 
 ---
 
