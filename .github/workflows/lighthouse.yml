@@ -17,5 +17,4 @@ jobs:
         run: npm run build
 
       - name: Run LHCI
-  run: |
-    npx @lhci/cli@0.15.x autorun --collect.url=http://localhost:3000 --collect.startServerCommand="npm run start" --collect.numberOfRuns=1
+        run: npx @lhci/cli@0.15.x autorun --collect.url=http://localhost:3000 --collect.startServerCommand="npm run start" --collect.numberOfRuns=1 --upload.target=temporary-public-storage
