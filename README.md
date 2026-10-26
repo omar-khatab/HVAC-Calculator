@@ -8,7 +8,9 @@ A responsive, web-based engineering utility for preliminary HVAC calculations. B
 [![Playwright Tests](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/playwright.yml/badge.svg)](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/playwright.yml)
 
 ---
+[![Lighthouse CI](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/lighthouse.yml)
 
+---
 ## Overview
 
 This project digitizes manual HVAC field calculations into an interactive web interface. Originally inspired by ventilation analysis during an internship at the National Authority for Tunnels (NAT), it bridges mechanical engineering domain logic with modern frontend architecture.
