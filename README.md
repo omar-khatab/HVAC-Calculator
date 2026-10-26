@@ -7,7 +7,6 @@ A responsive, web-based engineering utility for preliminary HVAC calculations. B
 
 [![Playwright Tests](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/playwright.yml/badge.svg)](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/playwright.yml)
 
----
 [![Lighthouse CI](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/lighthouse.yml)
 
 ---
