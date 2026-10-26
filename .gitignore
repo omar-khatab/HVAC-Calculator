@@ -47,3 +47,9 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Lighthouse reports - local only
+lighthouse-report.json
+lighthouse-report.html
+lighthouse-reports/
+.lighthouseci/
