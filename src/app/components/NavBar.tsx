@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import ProModel from "./ProModel"
 import { Gem, House, Menu, SquareChartGantt, ThermometerSnowflake, X } from "lucide-react"
 
@@ -16,6 +16,17 @@ export default function NavBar() {
         {id: 1, title: "DuctSizer", link: "/DuctSizer", icon: <SquareChartGantt size={20} strokeWidth={1.5} />},
         {id: 2, title: "BTUCalculator", link: "/BTUCalculator", icon: <ThermometerSnowflake size={20} strokeWidth={1.5} />},
     ]
+
+    // handle escape key form toggle menu 
+    useEffect(() => {
+        const handleEsc = (e: KeyboardEvent) => {
+            if (e.key === 'Escape' && open) {
+                setOpen(false);
+            }
+        };
+        window.addEventListener('keydown', handleEsc);
+        return () => window.removeEventListener('keydown', handleEsc);
+    }, [open]);
 
     return (
         <>

@@ -9,10 +9,10 @@ type Prop = {
 
 export default function ProModel({showPro, setShowPro} : Prop) {
 
+    // Handle escape key to close modal
     useEffect(() => {
-    if (!showPro) return;
     const handleEsc = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') setShowPro(false);
+    if (e.key === 'Escape' && showPro) setShowPro(false);
     };
     window.addEventListener('keydown', handleEsc);
     return () => window.removeEventListener('keydown', handleEsc);
