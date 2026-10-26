@@ -42,7 +42,11 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
-
+      - name: Debug report folder
+        if: ${{ !cancelled() }}
+        run: |
+          ls -R playwright-report | head -50
+          find . -name "*.html" -not -path "./node_modules/*" -not -path "./.next/*" | head -20
       - name: Prepare report
         if: ${{ !cancelled() && github.event_name != 'pull_request' }}
         run: |
