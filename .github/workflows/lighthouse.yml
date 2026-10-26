@@ -1,7 +1,7 @@
 name: Lighthouse CI
 on:
   push:
-    branches: [master, reports-action]
+    branches: [master]
   workflow_dispatch:
 
 permissions:
