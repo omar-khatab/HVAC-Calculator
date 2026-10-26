@@ -7,7 +7,7 @@ export default function Home() {
     <div className="max-w-7xl mx-auto px-4 pt-[80] pb-20 flex flex-col items-center text-center">
       {/* Hero */}
       <div className="mb-16 max-w-2xl">
-        <span className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-1.5 rounded-full text-sm font-semibold mb-6 border border-accent/20">
+        <span className="inline-flex items-center gap-2 bg-accent text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-6 border border-accent/20">
           <Box className="w-3.5 h-3.5" />
           Next.js • TypeScript • Tailwind
         </span>
@@ -68,7 +68,7 @@ export default function Home() {
       </div>
 
       {/* Small trust bar */}
-      <div className="mt-12 flex items-center gap-6 text-sm text-secondary/60">
+      <div className="mt-12 flex items-center gap-6 text-sm text-secondary">
         <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5" /> Real formulas</span>
         <span className="flex items-center gap-1.5"><Box className="w-3.5 h-3.5" /> No backend</span>
         <span className="flex items-center gap-1.5"><Wind className="w-3.5 h-3.5" /> SMACNA based</span>

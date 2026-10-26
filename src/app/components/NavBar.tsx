@@ -58,6 +58,7 @@ export default function NavBar() {
                 </button>
                 {/* Mobile Burger(icon) */}
                 <button 
+                    aria-label="Toggle mobile menu"
                     data-testid="mobile-burger"
                     onClick={() => setOpen(!open)}
                     className="md:hidden w-9 h-9 rounded-full bg-surface/50 flex items-center justify-center cursor-pointer">
