@@ -1,6 +1,6 @@
 # ❄ HVAC Duct & BTU Calculator
 
-A responsive, web-based engineering utility for preliminary HVAC calculations. Built with **Next.js 15 (App Router)** and **TypeScript Strict**, it estimates cooling loads (BTU) and calculates optimal duct dimensions using the Continuity Equation and SMACNA standards.
+A responsive, web-based engineering utility for preliminary HVAC calculations. Built with **Next.js (App Router)** and **TypeScript Strict**, it estimates cooling loads (BTU) and calculates optimal duct dimensions using the Continuity Equation and common duct-sizing practice.
 
 **Live Demo:** https://hvac-calculator-ebon.vercel.app/
 
@@ -20,6 +20,8 @@ This project digitizes manual HVAC field calculations into an interactive web in
 
 The goal is a **testable, production-grade engineering tool** where formulas and manufacturing constraints are covered by unit tests, and the user flows are covered by end-to-end tests.
 
+See [PLAN.md](PLAN.md) for the design plan: scope, architecture, testing strategy and known limitations.
+
 ## Key Features
 
 ### BTU Cooling Load Estimator
@@ -29,7 +31,7 @@ The goal is a **testable, production-grade engineering tool** where formulas and
 
 ### Duct Sizing Calculator
 - Duct area via Continuity Equation: `A = Q / V`
-- Equivalent round diameter: `D = 2 * sqrt(A / π)`
+- Equivalent round diameter: `D = 2 * sqrt(A / π)` (A in ft², D in ft; shown in inches)
 - Rectangular sizes from standard widths (6"-48") with even-height rounding (manufacturing standard)
 - Filters: max 10% area error, height 6"-48", aspect ratio ≤ 4:1 to prevent noise/friction
 - Returns 4 optimal sizes sorted closest to square
@@ -60,9 +62,9 @@ Business logic lives in `src/app/libs/` and is isolated for testability. Overall
 | `libs/ductSuggestions.ts` | **100** | 92.3 | **100** | **100** |
 | `libs/formulas.ts` | **100** | **100** | **100** | **100** |
 | `BTUCalculator/BTUComponents/Outputs.tsx` | **100** | **100** | **100** | **100** |
-| `Ductsizer/DuctComponent/Outputs.tsx` | **100** | **100** | **100** | **100** |
+| `DuctSizer/DuctComponent/Outputs.tsx` | **100** | **100** | **100** | **100** |
 | `BTUCalculator/BTUComponents/Main.tsx` | 0 | 0 | 0 | 0 |
-| `Ductsizer/DuctComponent/Main.tsx` | 0 | 0 | 0 | 0 |
+| `DuctSizer/DuctComponent/Main.tsx` | 0 | 0 | 0 | 0 |
 | `components/Inputs.tsx` | 0 | 0 | 0 | 0 |
 | `components/ProModel.tsx` | 0 | 0 | 0 | 0 |
 
@@ -87,7 +89,7 @@ Pure BTU and duct physics:
 
 ### End-to-End Tests (Playwright)
 
-28 tests in `e2e/` run against a production build:
+28 tests in `e2e/`. In CI they run against a production build (`npm run start` after `next build`); locally Playwright starts `npm run dev` or reuses a server already running on port 3000.
 
 | Spec | Covers |
 | :--- | :--- |
@@ -102,12 +104,12 @@ Pure BTU and duct physics:
 # Install
 npm install --legacy-peer-deps
 
-# Unit tests
-npm run test
+# Unit tests (single run, then with coverage)
+npx vitest run
 npx vitest run --coverage
-npx vitest run src/libs/ductSuggestions.test.ts
+npx vitest run src/app/libs/ductSuggestions.test.ts
 
-# E2E tests (starts the dev server automatically)
+# E2E tests (locally: starts the dev server, or reuses a running one)
 npx playwright install chromium
 npx playwright test --project=chromium
 ```
