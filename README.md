@@ -181,6 +181,7 @@ hvac-calculator/
 │   └── setup.ts
 ├── .gitignore
 ├── LICENSE
+├── PLAN.md
 ├── README.md
 ├── eslint.config.mjs
 ├── lighthouse.json
