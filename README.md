@@ -39,7 +39,7 @@ The goal is a **testable, production-grade engineering tool** where formulas and
 
 ## Tech Stack
 
-- **Framework:** Next.js 15 App Router, React 19 - `src/` directory structure
+- **Framework:** Next.js App Router, React - `src/` directory structure
 - **Language:** TypeScript Strict
 - **Styling:** Tailwind CSS, Lucide Icons
 - **Unit Testing:** Vitest 1.6.1, @testing-library/react, jsdom, @vitest/coverage-v8
@@ -50,7 +50,7 @@ The goal is a **testable, production-grade engineering tool** where formulas and
 
 ### Unit Tests
 
-Business logic lives in `src/libs/` and is isolated for testability. Overall coverage is low by design because page shells, Main components, and input forms are not unit-tested - only pure logic and output components are. Those UI parts are covered by the Playwright E2E tests instead.
+Business logic lives in `src/app/libs/` and is isolated for testability. Overall coverage is low by design because page shells, Main components, and input forms are not unit-tested - only pure logic and output components are. Those UI parts are covered by the Playwright E2E tests instead.
 
 #### Latest Local Coverage (v8)
 
@@ -66,13 +66,13 @@ Business logic lives in `src/libs/` and is isolated for testability. Overall cov
 | `components/Inputs.tsx` | 0 | 0 | 0 | 0 |
 | `components/ProModel.tsx` | 0 | 0 | 0 | 0 |
 
-#### 1. `src/libs/formulas.ts`
+#### 1. `src/app/libs/formulas.ts`
 Pure BTU and duct physics:
 - `roomArea * 430` BTU, occupant `people * 600` added after sun factor
 - `A = Q/V`, `D = 2*sqrt(A*144/π)`, conversions `ft²→in²`, `ft²→m²`
 - Guards: `velocity=0` → `0` not `Infinity`, `cfm=0` → `0`
 
-#### 2. `src/libs/ductSuggestions.ts`
+#### 2. `src/app/libs/ductSuggestions.ts`
 - Validates every suggestion: `area=w*h`, `error ≤10%`, `6≤h≤48`, `ratio≤4`
 - `it.each([0.5, 0.7, 1.25, 2.4, 5])` ft² - always 1-4 results
 - No duplicates: `12x16` == `16x12`
