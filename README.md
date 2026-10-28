@@ -105,7 +105,7 @@ npm install --legacy-peer-deps
 # Unit tests
 npm run test
 npx vitest run --coverage
-npx vitest run src/libs/__tests__/ductSuggestions.test.ts
+npx vitest run src/libs/ductSuggestions.test.ts
 
 # E2E tests (starts the dev server automatically)
 npx playwright install chromium
