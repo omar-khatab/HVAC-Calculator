@@ -158,7 +158,7 @@ Pure BTU and duct physics:
 
 ```bash
 # Install
-npm install
+npm install --legacy-peer-deps
 
 # Unit tests (single run, then with coverage)
 npx vitest run
@@ -257,7 +257,7 @@ hvac-calculator/
 ```bash
 git clone https://github.com/omar-khatab/HVAC-Calculator.git
 cd HVAC-Calculator
-npm install
+npm install --legacy-peer-deps
 npm run dev
 # http://localhost:3000
 ```
