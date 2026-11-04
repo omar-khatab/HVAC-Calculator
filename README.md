@@ -35,11 +35,13 @@ Same block system powers both calculators:
 ```mermaid
 flowchart LR
     subgraph BTU["BTU Path"]
+        direction LR
         A1["INPUT - BTU<br>Area, People, Windows, Sun"]
         B1["FORMULA - BTU"]
         A1 --> B1
     end
     subgraph DUCT["DUCT Path"]
+        direction LR
         A2["INPUT - DUCT<br>CFM, FPM"]
         B2["FORMULA - DUCT"]
         A2 --> B2
@@ -55,13 +57,13 @@ flowchart LR
     C --> D
     D --> E
 
-    style A1 fill:#DBEAFE,stroke:#2563EB,stroke-width:3px
-    style B1 fill:#DBEAFE,stroke:#0EA5E9,stroke-width:3px
-    style A2 fill:#DCFCE7,stroke:#16A34A,stroke-width:3px
-    style B2 fill:#DCFCE7,stroke:#059669,stroke-width:3px
-    style C fill:#FEE2E2,stroke:#DC2626,stroke-width:3px
-    style D fill:#FEF3C7,stroke:#D97706,stroke-width:3px
-    style E fill:#F3E8FF,stroke:#7C3AED,stroke-width:3px
+    style A1 fill:#1E40AF,stroke:#3B82F6,color:#FFFFFF,stroke-width:3px
+    style B1 fill:#1E3A8A,stroke:#60A5FA,color:#FFFFFF,stroke-width:3px
+    style A2 fill:#166534,stroke:#22C55E,color:#FFFFFF,stroke-width:3px
+    style B2 fill:#14532D,stroke:#4ADE80,color:#FFFFFF,stroke-width:3px
+    style C fill:#7F1D1D,stroke:#EF4444,color:#FFFFFF,stroke-width:3px
+    style D fill:#78350F,stroke:#F59E0B,color:#FFFFFF,stroke-width:3px
+    style E fill:#4C1D95,stroke:#A78BFA,color:#FFFFFF,stroke-width:3px
 ```
 
 **Flow Logic:**
