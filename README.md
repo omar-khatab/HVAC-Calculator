@@ -2,10 +2,66 @@
 
 A responsive, web-based engineering utility for preliminary HVAC calculations. Built with **Next.js (App Router)** and **TypeScript Strict**, it estimates cooling loads (BTU) and calculates optimal duct dimensions using the Continuity Equation and common duct-sizing practice.
 
-**Live Demo:** https://hvac-calculator-ebon.vercel.app/
+**🌐 Live Demo:** https://hvac-calculator-ebon.vercel.app/
 
-[![Playwright Tests](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/playwright.yml/badge.svg)](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/playwright.yml)
-[![Lighthouse CI](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/lighthouse.yml)
+[[Playwright Tests](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/playwright.yml/badge.svg)](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/playwright.yml)
+[[Lighthouse CI](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/lighthouse.yml)
+
+[HVAC Cover](./assets/hvac-general-blocks.png)
+
+## 🎬 Demo
+
+### BTU Calculator - Live
+[BTU Demo](./assets/hvac-btu-demo.gif)
+*Area, People, Windows, Sun Exposure → BTU/h, Ton, HP, kW changes live*
+
+### Duct Sizer - Live
+[Duct Demo](./assets/hvac-duct-demo.gif)
+*CFM / FPM → 4 optimal rectangular sizes sorted closest to square*
+
+### 📸 Screenshots
+| BTU Calculator | Duct Sizer |
+| :---: | :---: |
+| [BTU](./assets/btu-screenshot.png) | [Duct](./assets/duct-screenshot.png) |
+
+---
+
+## 🧩 General Block System - BTU & DUCT
+
+Same block system powers both calculators:
+
+[General Block System](./assets/hvac-general-blocks.png)
+
+```mermaid
+flowchart LR
+    subgraph BTU
+        A1[INPUT BTU<br/>Area, People, Windows, Sun] --> B1[FORMULA BTU<br/>BTU=(Area*430+Win*1000)*Sun+People*600]
+    end
+    subgraph DUCT
+        A2[INPUT DUCT<br/>CFM, FPM] --> B2[FORMULA DUCT<br/>Area=Q/V, D=2*sqrt(A*144/π)]
+    end
+    B1 & A1 & B2 & A2 --> C[VALIDATION<br/>velocity>0, cfm>0<br/>Guards: 0->0 not Infinity/NaN]
+    C --> D[OUTPUT<br/>BTU/h, Ton, Area, Diameter, 4 Rect]
+    D --> E[RECOMMENDATION<br/>Residential/Commercial<br/>Velocity: Low/Med/High]
+
+    style A1 fill:#DBEAFE,stroke:#2563EB,stroke-width:3px
+    style B1 fill:#DBEAFE,stroke:#0EA5E9,stroke-width:3px
+    style A2 fill:#DCFCE7,stroke:#16A34A,stroke-width:3px
+    style B2 fill:#DCFCE7,stroke:#059669,stroke-width:3px
+    style C fill:#FEE2E2,stroke:#DC2626,stroke-width:3px
+    style D fill:#FEF3C7,stroke:#D97706,stroke-width:3px
+    style E fill:#F3E8FF,stroke:#7C3AED,stroke-width:3px
+```
+
+**Flow Logic:**
+- **INPUT + FORMULA** → Both feed into **VALIDATION**
+- **VALIDATION**: Shared engine - checks `velocity>0`, `cfm>0`, `area>0`, guards return `0` not `Infinity/NaN` for both BTU & Duct
+- **OUTPUT** → **RECOMMENDATION**
+
+### Detailed Flow per Calculator
+[Detailed Block Flow](./assets/hvac-final-blocks.png)
+
+---
 
 ## Reports
 
