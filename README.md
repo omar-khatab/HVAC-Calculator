@@ -30,7 +30,7 @@ A responsive, web-based engineering utility for preliminary HVAC calculations. B
 
 Same block system powers both calculators:
 
-[General Block System](./assets/hvac-general-blocks.png)
+[General Block System](./assets/hvac-blocks.png)
 
 ```mermaid
 flowchart LR
