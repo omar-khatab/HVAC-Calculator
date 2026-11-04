@@ -72,7 +72,7 @@ flowchart LR
 - **OUTPUT** → **RECOMMENDATION**
 
 ### Detailed Flow per Calculator
-[Detailed Block Flow](./assets/hvac-final-blocks.png)
+[Detailed Block Flow](./assets/hvac-blocks.png)
 
 ---
 
@@ -208,6 +208,14 @@ hvac-calculator/
 │       └── playwright.yml
 ├── .vscode/
 │   └── extensions.json
+├── .assets/
+│   └── btu-screenshot.png
+│   └── duct-screenshot.png
+│   └── hvac-blocks.png
+│   └── hvac-btu-demo.gif
+│   └── hvac-combined.png
+│   └── hvac-duct-demo.gif
+│   └── hvac-general-blocks.png
 ├── e2e/
 │   ├── pages/
 │   │   └── calculators.page.ts
