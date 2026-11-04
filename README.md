@@ -30,19 +30,30 @@ A responsive, web-based engineering utility for preliminary HVAC calculations. B
 
 Same block system powers both calculators:
 
-[General Block System](./assets/hvac-blocks.png)
+[General Block System](./assets/hvac-general-blocks.png)
 
 ```mermaid
 flowchart LR
-    subgraph BTU
-        A1[INPUT BTU<br/>Area, People, Windows, Sun] --> B1[FORMULA BTU<br/>BTU=(Area*430+Win*1000)*Sun+People*600]
+    subgraph BTU["BTU Path"]
+        A1["INPUT - BTU<br>Area, People, Windows, Sun"]
+        B1["FORMULA - BTU"]
+        A1 --> B1
     end
-    subgraph DUCT
-        A2[INPUT DUCT<br/>CFM, FPM] --> B2[FORMULA DUCT<br/>Area=Q/V, D=2*sqrt(A*144/π)]
+    subgraph DUCT["DUCT Path"]
+        A2["INPUT - DUCT<br>CFM, FPM"]
+        B2["FORMULA - DUCT"]
+        A2 --> B2
     end
-    B1 & A1 & B2 & A2 --> C[VALIDATION<br/>velocity>0, cfm>0<br/>Guards: 0->0 not Infinity/NaN]
-    C --> D[OUTPUT<br/>BTU/h, Ton, Area, Diameter, 4 Rect]
-    D --> E[RECOMMENDATION<br/>Residential/Commercial<br/>Velocity: Low/Med/High]
+    C["VALIDATION<br>Shared Engine<br>Guards zero to zero"]
+    D["OUTPUT<br>BTU, Ton, Area, Diameter"]
+    E["RECOMMENDATION<br>Residential, Velocity"]
+
+    B1 --> C
+    A1 --> C
+    B2 --> C
+    A2 --> C
+    C --> D
+    D --> E
 
     style A1 fill:#DBEAFE,stroke:#2563EB,stroke-width:3px
     style B1 fill:#DBEAFE,stroke:#0EA5E9,stroke-width:3px
