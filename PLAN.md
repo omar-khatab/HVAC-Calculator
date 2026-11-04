@@ -57,7 +57,7 @@ GitHub Actions runs Playwright (on push and pull request) and Lighthouse CI (on 
 ## Run it
 
 ```bash
-npm install --legacy-peer-deps
+npm install
 npm run dev                      # http://localhost:3000
 npx vitest run --coverage        # unit tests + coverage
 npx playwright install chromium
