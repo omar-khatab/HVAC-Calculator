@@ -4,8 +4,8 @@ A responsive, web-based engineering utility for preliminary HVAC calculations. B
 
 **🌐 Live Demo:** https://hvac-calculator-ebon.vercel.app/
 
-[[Playwright Tests](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/playwright.yml/badge.svg)](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/playwright.yml)
-[[Lighthouse CI](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/omar-khatab/HVAC-Calculator/actions/workflows/lighthouse.yml)
+[[Playwright Tests](https://omar-khatab.github.io/HVAC-Calculator/lighthouse/)]
+[[Lighthouse CI](https://omar-khatab.github.io/HVAC-Calculator/playwright/)]
 
 [HVAC Cover](./assets/hvac-general-blocks.png)
 
